@@ -604,7 +604,7 @@ body {
 .review-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-md);
+    gap: 1.5rem;
     text-align: left;
 }
 
@@ -636,15 +636,15 @@ body {
 
 .track-name {
     font-family: var(--font-body);
-    font-size: 1.2rem;
-    font-weight: 900;
+    font-size: 1.25rem;
+    font-weight: 800;
     color: var(--color-darker);
     margin-bottom: var(--spacing-sm);
     position: relative;
     z-index: 1;
     border-bottom: 2px solid var(--color-orange);
     display: inline-block;
-    padding-bottom: 0.2rem;
+    padding: 0 0.5rem 0.2rem 0;
 }
 
 .track-name small {
@@ -756,13 +756,13 @@ body {
 
 .comment-bubble {
     flex-grow: 1;
-    max-width: 650px;
-    /* PC版で間延びしないように制限 */
+    max-width: 700px;
     background: var(--color-light);
-    padding: 2rem;
-    border-radius: 20px;
+    padding: 1.8rem 2rem;
+    border-radius: 12px;
     position: relative;
-    border: 2px solid var(--color-sand);
+    border: 1px solid var(--color-sand);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .comment-bubble::before {
@@ -800,17 +800,23 @@ body {
 }
 
 .comment-content {
-    min-height: 80px;
     width: 100%;
+    text-align: left;
 }
 
 .comment-text {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: var(--color-darker);
-    text-align: justify;
-    word-break: break-all;
+    text-align: left !important;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .comment-bubble {
+        padding: 1.5rem !important;
+    }
 }
 
 
