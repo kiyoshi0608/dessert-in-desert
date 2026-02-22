@@ -3,13 +3,7 @@
 window.addEventListener('DOMContentLoaded', () => {
     const img = document.querySelector('.album-cover');
     if (img) {
-        // Try relative path first (when media folder exists)
         img.src = 'media/cover.jpg';
-        img.onerror = function () {
-            // Fallback: try file:// absolute path
-            this.src = 'file:///Users/kawamatakiyoshi1/.gemini/antigravity/brain/4f609614-eeae-4148-ba7f-2cab2b7079ed/media__1771209311457.jpg';
-            this.onerror = null;
-        };
     }
 });
 
