@@ -891,6 +891,21 @@ body {
     font-weight: 600;
     color: var(--color-teal);
     letter-spacing: 0.2em;
+    margin-bottom: var(--spacing-lg);
+}
+
+.tour-flyer {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+}
+
+.flyer-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tour-dates {
