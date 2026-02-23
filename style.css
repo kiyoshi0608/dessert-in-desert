@@ -455,11 +455,14 @@ body {
 }
 
 .section-title {
-    font-family: var(--font-display);
+    font-family: var(--font-accent);
+    /* 小文字対応フォントに変更 */
     font-size: 1.5rem;
-    letter-spacing: 0.3em;
+    font-weight: 800;
+    letter-spacing: 0.23em;
     color: var(--color-orange);
     margin-bottom: var(--spacing-sm);
+    text-transform: none !important;
 }
 
 .album-name {
@@ -496,7 +499,7 @@ body {
     letter-spacing: 0.2em;
     color: var(--color-orange);
     margin-bottom: var(--spacing-sm);
-    text-transform: uppercase;
+    text-transform: none !important;
 }
 
 .tracklist ol {
@@ -751,7 +754,7 @@ body {
     color: var(--color-orange);
     display: block;
     margin-bottom: 0.2rem;
-    text-transform: uppercase;
+    text-transform: none !important;
 }
 
 .member-name {
@@ -1064,6 +1067,7 @@ body {
     font-size: 1rem;
     color: var(--color-orange);
     margin-bottom: var(--spacing-md);
+    text-transform: none !important;
 }
 
 .footer-social {
