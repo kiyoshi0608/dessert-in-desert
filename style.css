@@ -154,20 +154,42 @@ body.no-scroll {
 }
 
 .menu-links li {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     overflow: hidden;
 }
 
 .menu-links a {
     display: block;
     font-family: var(--font-title);
-    font-size: clamp(3rem, 10vw, 6rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    /* サイズを少し抑えて適切に調整 */
     color: var(--color-white);
     text-decoration: none;
-    transition: all 0.3s ease;
-    transform: translateY(100%);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(110%);
     text-shadow: 4px 4px 0 var(--color-orange);
     letter-spacing: 0.05em;
+}
+
+/* Staggered entrance animation delays */
+.menu-overlay.is-open .menu-links li:nth-child(1) a {
+    transition-delay: 0.1s;
+}
+
+.menu-overlay.is-open .menu-links li:nth-child(2) a {
+    transition-delay: 0.15s;
+}
+
+.menu-overlay.is-open .menu-links li:nth-child(3) a {
+    transition-delay: 0.2s;
+}
+
+.menu-overlay.is-open .menu-links li:nth-child(4) a {
+    transition-delay: 0.25s;
+}
+
+.menu-overlay.is-open .menu-links li:nth-child(5) a {
+    transition-delay: 0.3s;
 }
 
 .menu-overlay.is-open .menu-links a {
@@ -176,7 +198,7 @@ body.no-scroll {
 
 .menu-links a:hover {
     color: var(--color-teal);
-    transform: scale(1.1) rotate(-3deg);
+    transform: scale(1.08) rotate(-2deg);
     text-shadow: 6px 6px 0 var(--color-white);
 }
 
