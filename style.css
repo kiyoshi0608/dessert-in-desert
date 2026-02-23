@@ -1122,6 +1122,40 @@ body {
         padding: var(--spacing-lg) 0;
     }
 
+    /* Hero Section Mobile Fixes */
+    .album-title {
+        font-size: clamp(2rem, 10vw, 3.5rem) !important;
+        /* スマホで1行に収まるサイズに */
+        white-space: nowrap;
+        margin: 1rem 0;
+    }
+
+    .in-text {
+        font-size: 0.5em;
+        /* 'in'のサイズを調整 */
+        padding: 0 0.3rem;
+        transform: rotate(-5deg) translateY(-0.2em);
+    }
+
+    .release-date {
+        font-size: 1.8rem !important;
+        padding: 0.3rem 1.2rem;
+    }
+
+    .release-label {
+        font-size: 1rem !important;
+        /* RELEASEバッジを少し小さく */
+        bottom: -1.2rem;
+        /* 数字に被らないように下にずらす */
+        right: -0.5rem;
+        padding: 0.2rem 0.8rem;
+    }
+
+    .catchphrase-text {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1.2rem;
+    }
+
     /* Member Review Mobile Adjustments */
     .review-grid {
         grid-template-columns: 1fr;
