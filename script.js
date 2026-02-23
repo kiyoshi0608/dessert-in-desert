@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Hamburger Menu Logic
     const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
     const menuOverlay = document.getElementById('menuOverlay');
     const menuLinks = document.querySelectorAll('.menu-links a');
+
+    const closeMenu = () => {
+        menuToggle.classList.remove('is-active');
+        menuOverlay.classList.remove('is-open');
+        document.body.classList.remove('no-scroll');
+    };
 
     if (menuToggle && menuOverlay) {
         menuToggle.addEventListener('click', (e) => {
@@ -22,22 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll');
         });
 
+        if (menuClose) {
+            menuClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeMenu();
+            });
+        }
+
         // Close menu when clicking outside (on the overlay)
         menuOverlay.addEventListener('click', (e) => {
             if (e.target === menuOverlay) {
-                menuToggle.classList.remove('is-active');
-                menuOverlay.classList.remove('is-open');
-                document.body.classList.remove('no-scroll');
+                closeMenu();
             }
         });
 
         // Close menu when a link is clicked
         menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('is-active');
-                menuOverlay.classList.remove('is-open');
-                document.body.classList.remove('no-scroll');
-            });
+            link.addEventListener('click', closeMenu);
         });
     }
 
