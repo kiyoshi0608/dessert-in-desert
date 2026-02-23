@@ -3,7 +3,31 @@
 window.addEventListener('DOMContentLoaded', () => {
     const img = document.querySelector('.album-cover');
     if (img) {
-        img.src = 'media/cover.jpg';
+        img.src = 'cover.jpg';
+    }
+});
+
+// Hamburger Menu Toggle
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuLinks = document.querySelectorAll('.menu-links a');
+
+    if (menuToggle && menuOverlay) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            menuOverlay.classList.toggle('is-open');
+            document.body.classList.toggle('no-scroll'); // Prevent scroll when menu is open
+        });
+
+        // Close menu when a link is clicked
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                menuOverlay.classList.remove('is-open');
+                document.body.classList.remove('no-scroll');
+            });
+        });
     }
 });
 
