@@ -109,18 +109,9 @@ body.no-scroll {
     pointer-events: none;
 }
 
-/* Open State for Bar Animation */
-.menu-toggle.is-active .bar:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-}
-
-.menu-toggle.is-active .bar:nth-child(2) {
+.menu-toggle.is-active {
     opacity: 0;
-    transform: translateX(20px);
-}
-
-.menu-toggle.is-active .bar:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
+    pointer-events: none;
 }
 
 .menu-overlay {
@@ -138,8 +129,8 @@ body.no-scroll {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.7, 0, 0.3, 1);
-    z-index: 99990;
-    /* toggleのすぐ下 */
+    z-index: 100000;
+    /* toggleより上に */
 }
 
 .menu-overlay.is-open {
@@ -165,7 +156,7 @@ body.no-scroll {
     align-items: center;
     box-shadow: 4px 4px 0 var(--color-orange);
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 100000;
+    z-index: 100001;
 }
 
 .menu-close:hover {
@@ -572,6 +563,7 @@ body.no-scroll {
     align-items: center;
     gap: var(--spacing-xs);
     animation: bounce 2s infinite;
+    z-index: 10;
 }
 
 @keyframes bounce {
@@ -591,13 +583,13 @@ body.no-scroll {
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.2em;
-    color: var(--color-darker);
+    color: var(--color-white);
 }
 
 .scroll-line {
     width: 2px;
     height: 40px;
-    background: linear-gradient(to bottom, var(--color-darker), transparent);
+    background: linear-gradient(to bottom, var(--color-white), transparent);
 }
 
 /* ===== ALBUM INFO SECTION ===== */
