@@ -1136,4 +1136,43 @@ body {
         font-size: 1.1rem;
         max-width: 80%;
     }
+
+    /* Tour Section Mobile Optimization */
+    .tour-header {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .tour-subtitle {
+        margin-bottom: 1.5rem;
+    }
+
+    .tour-flyer {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .tour-dates {
+        gap: 0.8rem;
+        /* 枠の間の隙間を狭く */
+    }
+
+    .tour-item {
+        padding: 1.2rem;
+        /* 内側の余白を削減 */
+    }
+
+    .tour-badge-wrapper {
+        min-height: 1.8rem;
+        /* バッジエリアの高さを低く */
+    }
+
+    .tour-date {
+        font-size: 1.6rem;
+        /* 日付を少し小さく */
+        margin-bottom: 0.2rem;
+    }
+
+    .tour-venue {
+        font-size: 1rem;
+        /* 会場名を少し小さく */
+    }
 }
