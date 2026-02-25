@@ -15,6 +15,19 @@
     --color-sky: #95E1D3;
     --color-dark: #2C3E50;
     --color-darker: #1a252f;
+    /* Tour section green palette - desert cactus inspired */
+    --color-tour-bg-start: #1a2e1e;
+    /* 濃いティールグリーン */
+    --color-tour-bg-end: #0f1f12;
+    /* 最深部分 */
+    --color-tour-green: #3a7d44;
+    /* サボテングリーン */
+    --color-tour-green-light: #5aad68;
+    /* ライトグリーン */
+    --color-tour-green-pale: #a8d5b5;
+    /* ペールグリーン */
+    --color-tour-accent: #e8c87a;
+    /* 磁器 ゴールデンイエロー */
     --color-light: #F7F7F7;
     --color-white: #FFFFFF;
 
@@ -1192,7 +1205,7 @@ body.no-scroll {
 /* ===== TOUR SECTION ===== */
 .tour {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 100%);
+    background: linear-gradient(150deg, var(--color-tour-bg-start) 0%, var(--color-tour-bg-end) 60%, #0c1a10 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1200,13 +1213,25 @@ body.no-scroll {
 .tour:before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--color-orange), transparent 70%);
-    opacity: 0.1;
-    animation: rotate 20s linear infinite;
+    top: -30%;
+    right: -8%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--color-tour-green) 0%, transparent 65%);
+    opacity: 0.12;
+    animation: rotate 25s linear infinite;
+}
+
+.tour:after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--color-orange) 0%, transparent 65%);
+    opacity: 0.07;
+    animation: rotate 18s linear infinite reverse;
 }
 
 @keyframes rotate {
@@ -1239,11 +1264,11 @@ body.no-scroll {
 .tour-subtitle {
     font-family: var(--font-accent);
     font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-teal);
-    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--color-tour-green-pale);
+    letter-spacing: 0.25em;
     margin-bottom: 3rem;
-    /* フライヤーとの距離を広げて、文字をより上に配置 */
+    text-transform: uppercase;
 }
 
 .tour-flyer {
@@ -1267,10 +1292,11 @@ body.no-scroll {
 }
 
 .tour-item {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    background: rgba(58, 125, 68, 0.12);
+    /* グリーントーンのガラス */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(90, 173, 104, 0.25);
+    border-radius: 14px;
     display: block;
     text-decoration: none;
     cursor: pointer;
@@ -1287,15 +1313,17 @@ body.no-scroll {
     left: 0;
     width: 4px;
     height: 100%;
-    background: var(--color-teal);
+    background: linear-gradient(to bottom, var(--color-tour-green-light), var(--color-tour-accent));
     transform: scaleY(0);
     transition: transform var(--transition-smooth);
+    border-radius: 4px 0 0 4px;
 }
 
 .tour-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(58, 125, 68, 0.25);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(58, 125, 68, 0.2);
+    border-color: rgba(90, 173, 104, 0.5);
 }
 
 .tour-item:hover:before {
@@ -1303,23 +1331,22 @@ body.no-scroll {
 }
 
 .tour-item.oneman {
-    background: rgba(255, 107, 53, 0.1);
-    border-color: var(--color-orange);
+    background: rgba(255, 107, 53, 0.12);
+    border-color: rgba(255, 107, 53, 0.4);
 }
 
 .tour-item.oneman:before {
-    background: var(--color-orange);
+    background: linear-gradient(to bottom, var(--color-orange), var(--color-bright-orange));
 }
 
 .tour-item.tour-final {
-    background: rgba(255, 107, 53, 0.2);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.18) 0%, rgba(232, 200, 122, 0.1) 100%);
     border-color: var(--color-orange);
     border-width: 2px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    /* グリッド内で高さを揃える */
 }
 
 .tour-badge-wrapper {
@@ -1369,15 +1396,17 @@ body.no-scroll {
 
 .day {
     font-size: 1rem;
-    color: var(--color-teal);
+    color: var(--color-tour-green-pale);
     margin-left: var(--spacing-xs);
+    font-weight: 700;
 }
 
 .tour-venue {
     font-family: var(--font-body);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    color: var(--color-sky);
+    color: var(--color-tour-accent);
+    letter-spacing: 0.03em;
 }
 
 /* ===== FOOTER ===== */
