@@ -445,20 +445,50 @@ body.no-scroll {
 }
 
 .special-site-label {
-    font-family: var(--font-punk);
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    color: var(--color-white);
-    background: var(--color-orange);
-    padding: 0.2rem 1.8rem;
+    font-family: var(--font-title);
+    /* 太めのブロック体 (Luckiest Guy) */
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--color-orange);
     display: inline-block;
-    transform: rotate(3deg);
-    box-shadow: 6px 6px 0 var(--color-darker);
-    margin-top: 1rem;
-    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
+    letter-spacing: 0.1em;
     z-index: 5;
     position: relative;
-    border: 3px solid var(--color-white);
-    animation: punkTilt 3s ease-in-out infinite;
+    text-shadow:
+        3px 3px 0 var(--color-white),
+        6px 6px 0 var(--color-darker);
+    animation: popBounce 2s ease-in-out infinite, colorShift 4s linear infinite;
+    -webkit-text-stroke: 1px var(--color-white);
+}
+
+@keyframes popBounce {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(2deg);
+    }
+
+    50% {
+        transform: scale(1.15) rotate(-2deg);
+    }
+}
+
+@keyframes colorShift {
+    0% {
+        color: var(--color-orange);
+    }
+
+    33% {
+        color: var(--color-teal);
+    }
+
+    66% {
+        color: var(--color-bright-orange);
+    }
+
+    100% {
+        color: var(--color-orange);
+    }
 }
 
 .release-info {
@@ -1459,11 +1489,11 @@ body.no-scroll {
     }
 
     .special-site-label {
-        font-size: 1.4rem;
-        padding: 0.2rem 1.2rem;
-        box-shadow: 4px 4px 0 var(--color-darker);
-        margin-top: 0.5rem;
-        border-width: 2px;
+        font-size: 1.8rem;
+        margin-top: 0.2rem;
+        text-shadow:
+            2px 2px 0 var(--color-white),
+            4px 4px 0 var(--color-darker);
     }
 
     .release-date {
