@@ -414,12 +414,12 @@ body.no-scroll {
 }
 
 .album-title-container {
-    margin: var(--spacing-lg) 0;
+    margin: 1.5rem 0;
+    /* 余白を大幅に削減 */
 }
 
 .album-title {
     font-family: var(--font-body);
-    /* Noto Sans JPは確実に小文字が判別できます */
     font-size: clamp(3rem, 9vw, 7.5rem);
     font-weight: 900;
     line-height: 1.1;
@@ -428,8 +428,39 @@ body.no-scroll {
         4px 4px 0 var(--color-darker),
         8px 8px 0 var(--color-orange);
     letter-spacing: 0.02em;
-    margin: 1.5rem 0;
+    margin: 0.5rem 0;
     text-transform: none !important;
+}
+
+.special-site-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 950;
+    /* 可能な限り太く */
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--color-white);
+    display: block;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+    z-index: 5;
+    position: relative;
+    text-shadow:
+        4px 4px 0 var(--color-orange),
+        8px 8px 0 var(--color-darker);
+    animation: megaPop 2s ease-in-out infinite;
+    line-height: 1;
+}
+
+@keyframes megaPop {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(1deg);
+    }
+
+    50% {
+        transform: scale(1.08) rotate(-1deg);
+    }
 }
 
 .in-text {
@@ -444,55 +475,9 @@ body.no-scroll {
     margin: 0 0.2rem;
 }
 
-.special-site-label {
-    font-family: var(--font-title);
-    /* 太めのブロック体 (Luckiest Guy) */
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    color: var(--color-orange);
-    display: inline-block;
-    margin-top: 0.5rem;
-    letter-spacing: 0.1em;
-    z-index: 5;
-    position: relative;
-    text-shadow:
-        3px 3px 0 var(--color-white),
-        6px 6px 0 var(--color-darker);
-    animation: popBounce 2s ease-in-out infinite, colorShift 4s linear infinite;
-    -webkit-text-stroke: 1px var(--color-white);
-}
-
-@keyframes popBounce {
-
-    0%,
-    100% {
-        transform: scale(1) rotate(2deg);
-    }
-
-    50% {
-        transform: scale(1.15) rotate(-2deg);
-    }
-}
-
-@keyframes colorShift {
-    0% {
-        color: var(--color-orange);
-    }
-
-    33% {
-        color: var(--color-teal);
-    }
-
-    66% {
-        color: var(--color-bright-orange);
-    }
-
-    100% {
-        color: var(--color-orange);
-    }
-}
-
 .release-info {
-    margin-top: var(--spacing-lg);
+    margin-top: 1rem;
+    /* スペースを詰める */
 }
 
 .date-container {
@@ -1475,25 +1460,27 @@ body.no-scroll {
 
     /* Hero Section Mobile Fixes */
     .album-title {
-        font-size: clamp(2rem, 10vw, 3.5rem) !important;
-        /* スマホで1行に収まるサイズに */
-        white-space: nowrap;
-        margin: 1rem 0;
+        font-size: clamp(2.5rem, 12vw, 4.5rem) !important;
+        margin: 0.5rem 0;
     }
 
     .in-text {
         font-size: 0.5em;
-        /* 'in'のサイズを調整 */
         padding: 0 0.3rem;
-        transform: rotate(-5deg) translateY(-0.2em);
+        transform: rotate(-5deg) translateY(-0.1em);
     }
 
     .special-site-label {
-        font-size: 1.8rem;
-        margin-top: 0.2rem;
+        font-size: 2.2rem;
+        margin-top: -0.2rem;
+        margin-bottom: 2rem;
         text-shadow:
-            2px 2px 0 var(--color-white),
-            4px 4px 0 var(--color-darker);
+            3px 3px 0 var(--color-orange),
+            6px 6px 0 var(--color-darker);
+    }
+
+    .release-info {
+        margin-top: 0.5rem;
     }
 
     .release-date {
@@ -1503,16 +1490,14 @@ body.no-scroll {
 
     .release-label {
         font-size: 1rem !important;
-        /* RELEASEバッジを少し小さく */
-        bottom: -1.2rem;
-        /* 数字に被らないように下にずらす */
-        right: -0.5rem;
-        padding: 0.2rem 0.8rem;
+        bottom: -1rem;
+        right: -0.2rem;
+        padding: 0.2rem 0.6rem;
     }
 
     .catchphrase-text {
         font-size: 0.9rem !important;
-        padding: 0.5rem 1.2rem;
+        padding: 0.4rem 1rem;
     }
 
     /* Member Review Mobile Adjustments */
