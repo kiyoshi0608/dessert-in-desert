@@ -414,41 +414,42 @@ body.no-scroll {
 }
 
 .album-title-container {
-    margin: 1.5rem 0;
-    /* 余白を大幅に削減 */
+    margin: 0.5rem 0;
+    /* 余白をさらに削減 */
 }
 
 .album-title {
     font-family: var(--font-body);
     font-size: clamp(3rem, 9vw, 7.5rem);
-    font-weight: 900;
-    line-height: 1.1;
+    font-weight: 1000;
+    /* 極限まで太く */
+    line-height: 1;
     color: var(--color-white);
     text-shadow:
         4px 4px 0 var(--color-darker),
         8px 8px 0 var(--color-orange);
     letter-spacing: 0.02em;
-    margin: 0.5rem 0;
+    margin: 0.2rem 0;
     text-transform: none !important;
 }
 
 .special-site-label {
     font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 950;
-    /* 可能な限り太く */
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    font-size: clamp(2.8rem, 8vw, 5rem);
     color: var(--color-white);
     display: block;
-    margin-top: -0.5rem;
-    margin-bottom: 2rem;
+    margin-top: -1.2rem;
+    /* タイトルに密着させる */
+    margin-bottom: 1.5rem;
     letter-spacing: 0.05em;
     z-index: 5;
     position: relative;
     text-shadow:
-        4px 4px 0 var(--color-orange),
-        8px 8px 0 var(--color-darker);
-    animation: megaPop 2s ease-in-out infinite;
-    line-height: 1;
+        5px 5px 0 var(--color-orange),
+        10px 10px 0 var(--color-darker);
+    animation: megaPop 2.5s ease-in-out infinite;
+    line-height: 1.2;
 }
 
 @keyframes megaPop {
@@ -1460,27 +1461,27 @@ body.no-scroll {
 
     /* Hero Section Mobile Fixes */
     .album-title {
-        font-size: clamp(2.5rem, 12vw, 4.5rem) !important;
-        margin: 0.5rem 0;
+        font-size: clamp(2.8rem, 14vw, 5rem) !important;
+        margin: 0.2rem 0;
     }
 
     .in-text {
         font-size: 0.5em;
-        padding: 0 0.3rem;
+        padding: 0 0.2rem;
         transform: rotate(-5deg) translateY(-0.1em);
     }
 
     .special-site-label {
-        font-size: 2.2rem;
-        margin-top: -0.2rem;
-        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
         text-shadow:
             3px 3px 0 var(--color-orange),
             6px 6px 0 var(--color-darker);
     }
 
     .release-info {
-        margin-top: 0.5rem;
+        margin-top: 0.2rem;
     }
 
     .release-date {
