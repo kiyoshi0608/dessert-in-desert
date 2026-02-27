@@ -377,25 +377,30 @@ body.no-scroll {
 
 /* SABOTENロゴ画像 */
 .artist-logo-img {
-    max-width: clamp(220px, 35vw, 420px);
+    max-width: clamp(160px, 25vw, 300px);
     width: 100%;
     height: auto;
+    max-height: 18vh;
     display: block;
-    margin: 0 auto 0.3rem;
-    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.6));
+    margin: 0 auto 0.2rem;
+    filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.7));
     animation: punkTilt 4s ease-in-out infinite;
     transform-origin: center;
+    object-fit: contain;
 }
 
 /* アルバムタイトルロゴ画像 */
 .album-title-img {
-    max-width: clamp(300px, 70vw, 750px);
+    max-width: clamp(220px, 42vw, 460px);
+    max-height: 32vh;
+    /* 横幅が広がり過ぎて縦に伸びるのを防ぐ */
     width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
-    filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
     animation: titleFloat 3s ease-in-out infinite;
+    object-fit: contain;
 }
 
 .artist-name {
@@ -1524,11 +1529,13 @@ body.no-scroll {
 
     /* Hero Section Mobile Fixes */
     .artist-logo-img {
-        max-width: clamp(160px, 55vw, 280px);
+        max-width: clamp(120px, 40vw, 200px);
+        max-height: 15vh;
     }
 
     .album-title-img {
-        max-width: clamp(260px, 88vw, 480px);
+        max-width: clamp(180px, 72vw, 320px);
+        max-height: 28vh;
     }
 
     .album-title {
