@@ -375,6 +375,29 @@ body.no-scroll {
     /* タイトルを上に上げるために削減 */
 }
 
+/* SABOTENロゴ画像 */
+.artist-logo-img {
+    max-width: clamp(220px, 35vw, 420px);
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 0.3rem;
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.6));
+    animation: punkTilt 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* アルバムタイトルロゴ画像 */
+.album-title-img {
+    max-width: clamp(300px, 70vw, 750px);
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.5));
+    animation: titleFloat 3s ease-in-out infinite;
+}
+
 .artist-name {
     font-family: var(--font-punk);
     font-size: clamp(3rem, 8vw, 5rem);
@@ -1500,6 +1523,14 @@ body.no-scroll {
     }
 
     /* Hero Section Mobile Fixes */
+    .artist-logo-img {
+        max-width: clamp(160px, 55vw, 280px);
+    }
+
+    .album-title-img {
+        max-width: clamp(260px, 88vw, 480px);
+    }
+
     .album-title {
         font-size: clamp(2.8rem, 14vw, 5rem) !important;
         margin: 0.2rem 0;
