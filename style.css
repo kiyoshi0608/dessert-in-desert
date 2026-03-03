@@ -448,14 +448,14 @@ body.no-scroll {
 }
 
 .artist-logo-img {
-    height: 42vh;
-    /* Ultra Gigantic as requested */
+    height: 48vh;
+    /* Ultra Mega Scale */
     width: auto;
-    margin-bottom: -10vh;
-    /* Deeper overlap for cohesion */
+    margin-bottom: -15vh;
+    /* Deeper integration overlap */
     z-index: 10;
     filter:
-        drop-shadow(6px 6px 0 #000) drop-shadow(-6px -6px 0 #000) drop-shadow(6px -6px 0 #000) drop-shadow(-6px 6px 0 #000) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+        drop-shadow(8px 8px 0 #000) drop-shadow(-8px -8px 0 #000) drop-shadow(8px -8px 0 #000) drop-shadow(-8px 8px 0 #000) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
     animation: punkHeroTilt 8s ease-in-out infinite;
 }
 
@@ -477,9 +477,10 @@ body.no-scroll {
 
 .album-type-tag {
     position: absolute;
-    bottom: 0;
-    right: 15%;
-    /* Moved inward */
+    bottom: 5vh;
+    /* Tucked higher for synthesis */
+    right: 22%;
+    /* Tucked Inward as per arrow */
     background: var(--color-pop-red);
     color: #fff;
     font-family: var(--font-accent);
@@ -498,9 +499,10 @@ body.no-scroll {
 /* Release Stamp - Integrated Poster Label */
 .hero-release-stamp {
     position: absolute;
-    bottom: -10vh;
-    left: 15%;
-    /* Moved inward */
+    bottom: -6vh;
+    /* Tucked Higher for synthesis */
+    left: 22%;
+    /* Tucked Inward as per arrow */
     background: #fff;
     border: 5px solid #000;
     padding: 2vh 5vh;
@@ -540,7 +542,8 @@ body.no-scroll {
 /* Redesigned Catchphrase: Stylish & Pop */
 .catchphrase-ribbon {
     background: #000;
-    padding: 1.5rem 6rem;
+    padding: 1.2rem 4rem;
+    /* More compact 'sticker' impact */
     position: relative;
     transform: rotate(-3deg) !important;
     /* Intentional aggressive tilt */
@@ -705,8 +708,7 @@ body.no-scroll {
     text-transform: uppercase;
 }
 
-.album-info .container,
-.member-comments .container {
+.album-info .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
@@ -1151,11 +1153,12 @@ body.no-scroll {
 }
 
 .comment-card {
-    display: flex;
+    display: flex !important;
     align-items: flex-start;
     gap: 3rem;
     margin-bottom: var(--spacing-xl);
-    width: 100%;
+    width: 100% !important;
+    max-width: none !important;
 }
 
 .comment-bubble {
@@ -1165,11 +1168,12 @@ body.no-scroll {
     padding: 2.5rem;
     position: relative;
     box-shadow: 12px 12px 0 #000;
-    flex: 1 1 auto;
-    /* Allow proper expansion */
+    flex: 1 1 auto !important;
+    /* Force full width expansion */
     z-index: 2;
     min-width: 0;
-    /* Important for flex child expansion */
+    width: 100%;
+    /* Ensure WIDE on desktop */
 }
 
 .comment-bubble::before {
