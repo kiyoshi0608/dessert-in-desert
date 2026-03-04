@@ -51,10 +51,14 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     width: 100%;
     position: relative;
     -webkit-font-smoothing: antialiased;
+}
+
+section {
+    overflow: hidden;
 }
 
 body {
@@ -614,8 +618,7 @@ body.no-scroll {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 200vw;
-    /* Wide enough to cover rotations */
+    width: 250vw;
     height: 50px;
     z-index: 20;
     font-family: var(--font-display);
@@ -1778,28 +1781,20 @@ body.no-scroll {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .album-info .container {
-        grid-template-columns: 1fr;
-    }
 
-    .album-links {
-        flex-direction: column;
-    }
-
-    .btn {
+    /* Critical fix: Prevent horizontal scroll and shifting */
+    html,
+    body {
+        overflow-x: hidden;
         width: 100%;
-        text-align: center;
+        position: relative;
     }
 
-    .tour-dates {
-        grid-template-columns: 1fr;
-    }
-
+    /* Hero Section Mobile Polish */
     .hero {
         height: 100vh;
-        min-height: 568px;
-        /* Support smaller devices like iPhone SE */
-        padding-top: 0;
+        min-height: 560px;
+        padding: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1808,107 +1803,157 @@ body.no-scroll {
     }
 
     .hero-main-visual {
-        margin-top: 5vh;
+        margin-top: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
-        gap: 0;
+        transform: scale(0.85);
+        /* Slightly scale down central group */
     }
 
     .artist-logo-img {
         height: auto !important;
-        width: 60vw !important;
-        max-height: 15vh !important;
-        margin-bottom: -8vh !important;
+        width: 50vw !important;
+        max-height: 12vh !important;
+        margin-bottom: -5vh !important;
         z-index: 2;
     }
 
     .album-title-img {
         height: auto !important;
-        width: 85vw !important;
+        width: 80vw !important;
         max-height: 25vh !important;
         z-index: 1;
     }
 
+    .album-type-tag {
+        top: 2%;
+        right: 15%;
+        font-size: 0.6rem !important;
+        padding: 0.3rem 0.8rem !important;
+        box-shadow: 4px 4px 0 #000 !important;
+    }
+
+    .hero-release-stamp {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        margin-top: 2vh;
+        transform: rotate(-3deg) !important;
+        box-shadow: 6px 6px 0 #000 !important;
+    }
+
+    .stamp-label {
+        font-size: 0.7rem !important;
+    }
+
+    .stamp-date {
+        font-size: 1.6rem !important;
+    }
+
     .hero-footer-block {
         margin-top: 2vh;
-        width: 90%;
+        width: 100%;
         display: flex;
         justify-content: center;
     }
 
-    .video-section {
-        padding: 8rem 0 10rem;
+    .catchphrase-ribbon {
+        padding: 0.6rem 1.2rem !important;
+        box-shadow: 6px 6px 0 var(--color-pop-yellow) !important;
     }
 
-    .video-grid {
-        gap: 4rem;
+    .ribbon-text {
+        font-size: 0.8rem !important;
+        letter-spacing: 0.1em;
+    }
+
+    /* Section Headers & Labels */
+    .section-title-group {
+        gap: 1rem !important;
+        margin-bottom: 2.5rem !important;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .vertical-label {
+        font-size: 0.6rem !important;
+        padding: 0.8rem 0.3rem !important;
+        box-shadow: 3px 3px 0 var(--color-pop-red) !important;
+    }
+
+    .section-title {
+        font-size: 1.8rem !important;
+    }
+
+    /* Video Section */
+    .video-section {
+        padding: 6rem 0 !important;
     }
 
     .video-section::before,
     .video-section::after {
-        font-size: 1rem;
-        height: 35px;
-        line-height: 35px;
+        font-size: 0.8rem !important;
+        height: 35px !important;
+        line-height: 35px !important;
+        width: 300vw !important;
     }
 
     .video-section::before {
-        top: 30px;
+        top: 30px !important;
+        transform: translateX(-50%) rotate(-3deg) !important;
     }
 
     .video-section::after {
-        bottom: 40px;
+        bottom: 50px !important;
+        transform: translateX(-50%) rotate(3deg) !important;
     }
 
-    /* Member Review Mobile Adjustments */
-    .review-grid {
+    .video-grid {
+        gap: 4rem !important;
+    }
+
+    /* Album Info & Review cards */
+    .album-info .container {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
-    .track-number {
-        font-size: 2.5rem;
-        top: 0;
+    .review-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .review-item {
+        padding: 1.2rem !important;
     }
 
     .track-name {
-        font-size: 1.1rem;
-        max-width: 80%;
+        font-size: 1.1rem !important;
     }
 
-    /* Tour Section Mobile Optimization */
-    .tour-header {
-        margin-bottom: var(--spacing-md);
+    .track-number {
+        font-size: 2rem !important;
     }
 
-    .tour-subtitle {
-        margin-bottom: 1.5rem;
-    }
-
-    .tour-flyer {
-        margin-bottom: var(--spacing-md);
-    }
-
+    /* Tour Section */
     .tour-dates {
-        gap: 0.8rem;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
     }
 
     .tour-item {
-        padding: 1.2rem;
-    }
-
-    .tour-badge-wrapper {
-        min-height: 1.8rem;
+        padding: 1.2rem !important;
+        box-shadow: 6px 6px 0 #000 !important;
     }
 
     .tour-date {
-        font-size: 1.6rem;
-        margin-bottom: 0.2rem;
+        font-size: 1.6rem !important;
     }
 
     .tour-venue {
-        font-size: 1rem;
+        font-size: 1rem !important;
     }
-}
-
 }
