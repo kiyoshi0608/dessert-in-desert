@@ -593,15 +593,58 @@ body.no-scroll {
 .video-section {
     background-color: var(--color-light);
     background-image:
-        radial-gradient(var(--color-pop-yellow) 2px, transparent 0),
-        radial-gradient(var(--color-pop-yellow) 2px, transparent 0);
-    background-size: 30px 30px;
-    background-position: 0 0, 15px 15px;
-    padding: var(--spacing-xl) 0 12rem;
+        radial-gradient(rgba(0, 0, 0, 0.05) 2px, transparent 0),
+        radial-gradient(rgba(230, 255, 0, 0.3) 4px, transparent 0);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    padding: 12rem 0 16rem;
     color: var(--color-darker);
     position: relative;
     overflow: hidden;
-    border-top: 15px solid #000;
+}
+
+/* Stylish Ribbon Dividers - POP PUNK CAUTION STYLE */
+.video-section::before,
+.video-section::after {
+    content: 'WATCH NOW ★ DESSERT IN DESERT ★ WATCH NOW ★ DESSERT IN DESERT ★';
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 60px;
+    z-index: 20;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    line-height: 60px;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 950;
+    letter-spacing: 0.2em;
+    border-top: 5px solid #000;
+    border-bottom: 5px solid #000;
+}
+
+.video-section::before {
+    top: -30px;
+    transform: rotate(-2.5deg);
+    background: repeating-linear-gradient(45deg,
+            var(--color-pop-red),
+            var(--color-pop-red) 20px,
+            #000 20px,
+            #000 40px);
+    color: #fff;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.video-section::after {
+    bottom: -30px;
+    transform: rotate(2.5deg);
+    background: repeating-linear-gradient(-45deg,
+            var(--color-pop-yellow),
+            var(--color-pop-yellow) 20px,
+            #000 20px,
+            #000 40px);
+    color: #000;
+    text-shadow: 2px 2px 0 #fff;
 }
 
 .video-section .section-watermark {
@@ -620,6 +663,8 @@ body.no-scroll {
 .video-item {
     width: 100%;
     animation: slideUp 0.8s ease-out forwards;
+    position: relative;
+    z-index: 5;
 }
 
 @keyframes slideUp {
@@ -1128,7 +1173,7 @@ body.no-scroll {
 
 .review-item {
     background: var(--color-white);
-    padding: var(--spacing-md);
+    padding: 1.2rem;
     border-radius: 12px;
     border: 3px solid #000;
     box-shadow: 8px 8px 0 #000;
@@ -1174,9 +1219,10 @@ body.no-scroll {
 
 .review-content {
     background: #fdfdfd;
-    padding: var(--spacing-sm);
+    padding: 1rem;
     border: 1px dashed var(--color-sand);
-    min-height: 100px;
+    min-height: 60px;
+    /* Reduced from 100px */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1745,59 +1791,43 @@ body.no-scroll {
     .hero {
         height: auto;
         min-height: 100vh;
-        padding: var(--spacing-lg) 0;
+        padding-top: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
-    /* Hero Section Mobile Fixes */
+    .hero-main-visual {
+        margin-top: 0;
+        gap: 0;
+    }
+
     .artist-logo-img {
-        max-width: clamp(120px, 40vw, 200px);
-        max-height: 15vh;
+        height: 25vh !important;
+        margin-bottom: -15vh !important;
     }
 
     .album-title-img {
-        max-width: clamp(180px, 72vw, 320px);
-        max-height: 28vh;
+        height: 35vh !important;
     }
 
-    .album-title {
-        font-size: clamp(2.8rem, 14vw, 5rem) !important;
-        margin: 0.2rem 0;
+    .hero-footer-block {
+        margin-top: -8vh;
     }
 
-    .in-text {
-        font-size: 0.5em;
-        padding: 0 0.2rem;
-        transform: rotate(-5deg) translateY(-0.1em);
+    .video-section {
+        padding: 8rem 0 10rem;
     }
 
-    .special-site-label {
-        font-size: 2.2rem;
-        margin: 1.2rem 0;
-        /* タイトルと日付の間を広げる */
-        text-shadow:
-            3px 3px 0 var(--color-orange),
-            6px 6px 0 var(--color-darker);
+    .video-grid {
+        gap: 4rem;
     }
 
-    .release-info {
-        margin-top: 0.8rem;
-    }
-
-    .release-date {
-        font-size: 1.8rem !important;
-        padding: 0.3rem 1.2rem;
-    }
-
-    .release-label {
-        font-size: 1rem !important;
-        bottom: -1rem;
-        right: -0.2rem;
-        padding: 0.2rem 0.6rem;
-    }
-
-    .catchphrase-text {
-        font-size: 0.9rem !important;
-        padding: 0.4rem 1rem;
+    .video-section::before,
+    .video-section::after {
+        font-size: 1.1rem;
+        height: 40px;
+        line-height: 40px;
     }
 
     /* Member Review Mobile Adjustments */
@@ -1830,28 +1860,23 @@ body.no-scroll {
 
     .tour-dates {
         gap: 0.8rem;
-        /* 枠の間の隙間を狭く */
     }
 
     .tour-item {
         padding: 1.2rem;
-        /* 内側の余白を削減 */
     }
 
     .tour-badge-wrapper {
         min-height: 1.8rem;
-        /* バッジエリアの高さを低く */
     }
 
     .tour-date {
         font-size: 1.6rem;
-        /* 日付を少し小さく */
         margin-bottom: 0.2rem;
     }
 
     .tour-venue {
         font-size: 1rem;
-        /* 会場名を少し小さく */
     }
 }
 
