@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Album Cover Image Loading
     const img = document.querySelector('.album-cover');
     if (img) {
-        img.src = 'cover.jpg';
+        img.src = 'media/cover.jpg';
         img.style.opacity = '0';
         img.style.transition = 'opacity 0.6s ease';
         img.onload = () => { img.style.opacity = '1'; };
