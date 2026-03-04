@@ -1782,178 +1782,171 @@ body.no-scroll {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
 
-    /* Critical fix: Prevent horizontal scroll and shifting */
     html,
     body {
-        overflow-x: hidden;
-        width: 100%;
+        overflow-x: hidden !important;
+        width: 100vw;
         position: relative;
     }
 
-    /* Hero Section Mobile Polish */
+    /* Hero Fixes - Prevent Overlap */
     .hero {
         height: 100vh;
-        min-height: 560px;
-        padding: 0;
+        min-height: 620px;
+        padding-top: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
     }
 
     .hero-main-visual {
-        margin-top: 0;
+        margin-top: -5vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
-        transform: scale(0.85);
-        /* Slightly scale down central group */
+        gap: 0;
     }
 
     .artist-logo-img {
-        height: auto !important;
-        width: 50vw !important;
-        max-height: 12vh !important;
-        margin-bottom: -5vh !important;
-        z-index: 2;
+        width: 40vw !important;
+        margin-bottom: -4vh !important;
+        z-index: 5;
     }
 
     .album-title-img {
-        height: auto !important;
-        width: 80vw !important;
-        max-height: 25vh !important;
-        z-index: 1;
+        width: 75vw !important;
+        margin-bottom: 2vh !important;
+        z-index: 10;
     }
 
     .album-type-tag {
-        top: 2%;
-        right: 15%;
-        font-size: 0.6rem !important;
-        padding: 0.3rem 0.8rem !important;
-        box-shadow: 4px 4px 0 #000 !important;
+        top: 2% !important;
+        right: 18% !important;
+        font-size: 0.55rem !important;
+        padding: 0.2rem 0.6rem !important;
     }
 
     .hero-release-stamp {
         position: relative !important;
         top: auto !important;
         left: auto !important;
-        margin-top: 2vh;
+        margin-top: 2rem;
         transform: rotate(-3deg) !important;
-        box-shadow: 6px 6px 0 #000 !important;
     }
 
     .stamp-label {
-        font-size: 0.7rem !important;
+        font-size: 0.65rem !important;
     }
 
     .stamp-date {
-        font-size: 1.6rem !important;
+        font-size: 1.4rem !important;
     }
 
     .hero-footer-block {
-        margin-top: 2vh;
-        width: 100%;
+        margin-top: 2rem;
+        width: 90%;
         display: flex;
         justify-content: center;
     }
 
     .catchphrase-ribbon {
-        padding: 0.6rem 1.2rem !important;
-        box-shadow: 6px 6px 0 var(--color-pop-yellow) !important;
+        padding: 0.5rem 1rem !important;
     }
 
     .ribbon-text {
-        font-size: 0.8rem !important;
-        letter-spacing: 0.1em;
+        font-size: 0.75rem !important;
     }
 
-    /* Section Headers & Labels */
+    /* Section Headers & Labels Scaling */
     .section-title-group {
-        gap: 1rem !important;
+        gap: 0.8rem !important;
         margin-bottom: 2.5rem !important;
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
+        justify-content: center;
     }
 
     .vertical-label {
-        font-size: 0.6rem !important;
-        padding: 0.8rem 0.3rem !important;
-        box-shadow: 3px 3px 0 var(--color-pop-red) !important;
+        font-size: 0.5rem !important;
+        padding: 0.6rem 0.3rem !important;
+        margin-top: 0.1rem;
     }
 
     .section-title {
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
     }
 
-    /* Video Section */
-    .video-section {
-        padding: 6rem 0 !important;
-    }
-
+    /* Video section ribbons fix */
     .video-section::before,
     .video-section::after {
-        font-size: 0.8rem !important;
-        height: 35px !important;
-        line-height: 35px !important;
-        width: 300vw !important;
+        font-size: 0.7rem !important;
+        height: 32px !important;
+        line-height: 32px !important;
+        width: 350vw !important;
     }
 
     .video-section::before {
-        top: 30px !important;
-        transform: translateX(-50%) rotate(-3deg) !important;
+        top: 25px !important;
     }
 
     .video-section::after {
-        bottom: 50px !important;
-        transform: translateX(-50%) rotate(3deg) !important;
-    }
-
-    .video-grid {
-        gap: 4rem !important;
-    }
-
-    /* Album Info & Review cards */
-    .album-info .container {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        bottom: 25px !important;
     }
 
     .review-grid {
         grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-    }
-
-    .review-item {
-        padding: 1.2rem !important;
-    }
-
-    .track-name {
-        font-size: 1.1rem !important;
-    }
-
-    .track-number {
-        font-size: 2rem !important;
-    }
-
-    /* Tour Section */
-    .tour-dates {
-        grid-template-columns: 1fr !important;
         gap: 1rem !important;
     }
 
-    .tour-item {
-        padding: 1.2rem !important;
-        box-shadow: 6px 6px 0 #000 !important;
-    }
-
-    .tour-date {
-        font-size: 1.6rem !important;
-    }
-
-    .tour-venue {
+    .track-name {
         font-size: 1rem !important;
     }
+
+    .track-number {
+        font-size: 1.6rem !important;
+    }
+}
+}
+
+/* Album Info & Review cards */
+.album-info .container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.review-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+}
+
+.review-item {
+    padding: 1.2rem !important;
+}
+
+.track-name {
+    font-size: 1.1rem !important;
+}
+
+.track-number {
+    font-size: 2rem !important;
+}
+
+/* Tour Section */
+.tour-dates {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.tour-item {
+    padding: 1.2rem !important;
+    box-shadow: 6px 6px 0 #000 !important;
+}
+
+.tour-date {
+    font-size: 1.6rem !important;
+}
+
+.tour-venue {
+    font-size: 1rem !important;
+}
 }
