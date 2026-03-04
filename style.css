@@ -27,6 +27,7 @@
     --font-body: 'Noto Sans JP', sans-serif;
     --font-accent: 'Outfit', sans-serif;
     --font-title: 'Luckiest Guy', cursive;
+    --font-ja-title: 'Dela Gothic One', sans-serif;
     --font-punk: 'Permanent Marker', cursive;
 
     /* Spacing */
@@ -66,6 +67,8 @@ body {
     color: var(--color-dark);
     background: var(--color-light);
     line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Global Paper Texture Overlay */
@@ -611,50 +614,40 @@ body.no-scroll {
     overflow: hidden;
 }
 
-/* Stylish Ribbon Dividers - POP PUNK VINYL TAPE STYLE */
+/* Stylish Ribbon Dividers - SOFT WASHI TAPE STYLE */
 .video-section::before,
 .video-section::after {
-    content: 'PLAY NOW ★ SABOTEN ★ DESSERT IN DESERT ★ PLAY NOW ★ SABOTEN ★';
+    content: '★ SABOTEN ★ DESSERT IN DESERT ★ PLAY NOW ★';
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     width: 250vw;
-    height: 50px;
+    height: 45px;
     z-index: 20;
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    line-height: 50px;
+    font-family: var(--font-punk);
+    font-size: 1.4rem;
+    line-height: 45px;
     text-align: center;
     white-space: nowrap;
-    font-weight: 950;
-    letter-spacing: 0.15em;
-    border-top: 3px solid rgba(0, 0, 0, 0.8);
-    border-bottom: 3px solid rgba(0, 0, 0, 0.8);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .video-section::before {
-    top: 60px;
-    transform: translateX(-50%) rotate(-1.5deg);
-    background: repeating-linear-gradient(45deg,
-            var(--color-teal),
-            var(--color-teal) 30px,
-            #111 30px,
-            #111 60px);
+    top: 50px;
+    transform: translateX(-50%) rotate(-1deg);
+    background: var(--color-teal);
+    clip-path: polygon(0% 15%, 10% 5%, 20% 12%, 30% 0%, 40% 10%, 50% 3%, 60% 15%, 70% 8%, 80% 20%, 90% 5%, 100% 18%, 100% 85%, 90% 95%, 80% 88%, 70% 98%, 60% 90%, 50% 100%, 40% 92%, 30% 97%, 20% 85%, 10% 95%, 0% 82%);
     color: #fff;
-    text-shadow: 2px 2px 0 #000;
 }
 
 .video-section::after {
-    bottom: 80px;
-    transform: translateX(-50%) rotate(1.5deg);
-    background: repeating-linear-gradient(-45deg,
-            var(--color-orange),
-            var(--color-orange) 30px,
-            #111 30px,
-            #111 60px);
+    bottom: 70px;
+    transform: translateX(-50%) rotate(1deg);
+    background: var(--color-orange);
+    clip-path: polygon(0% 10%, 15% 0%, 25% 12%, 35% 5%, 45% 15%, 55% 8%, 65% 20%, 75% 5%, 85% 15%, 95% 2%, 100% 12%, 100% 90%, 85% 100%, 75% 88%, 65% 95%, 55% 85%, 45% 100%, 35% 92%, 25% 98%, 15% 82%, 10% 95%, 0% 88%);
     color: #fff;
-    text-shadow: 2px 2px 0 #000;
 }
 
 .video-section .section-watermark {
@@ -1209,16 +1202,17 @@ body.no-scroll {
 }
 
 .track-name {
-    font-family: var(--font-title);
-    font-size: 1.5rem;
+    font-family: var(--font-ja-title), var(--font-title);
+    font-size: 1.35rem;
     font-weight: 400;
     color: var(--color-darker);
     margin-bottom: var(--spacing-sm);
     position: relative;
     z-index: 1;
-    border-bottom: 4px solid var(--color-orange);
+    border-bottom: 5px solid var(--color-pop-yellow);
     display: inline-block;
-    padding: 0 1rem 0.2rem 0;
+    padding: 0 1rem 0.1rem 0;
+    letter-spacing: -0.02em;
 }
 
 .track-name small {
@@ -1791,33 +1785,35 @@ body.no-scroll {
 
     /* Hero Fixes - Prevent Overlap */
     .hero {
-        height: 100vh;
-        min-height: 620px;
-        padding-top: 0;
+        height: auto;
+        min-height: 100vh;
+        padding: 4rem 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 2rem;
     }
 
     .hero-main-visual {
-        margin-top: -5vh;
+        margin-top: 0;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0;
+        gap: 1.5rem;
     }
 
     .artist-logo-img {
-        width: 40vw !important;
-        margin-bottom: -4vh !important;
-        z-index: 5;
+        width: 32vw !important;
+        margin-bottom: 0 !important;
+        filter: drop-shadow(5px 5px 0 #000);
     }
 
     .album-title-img {
         width: 75vw !important;
-        margin-bottom: 2vh !important;
-        z-index: 10;
+        margin-bottom: 0 !important;
+        filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.5));
     }
 
     .album-type-tag {
@@ -1839,31 +1835,35 @@ body.no-scroll {
         font-size: 0.65rem !important;
     }
 
-    .stamp-date {
-        font-size: 1.4rem !important;
+    .album-info .container {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+        text-align: center;
     }
 
-    .hero-footer-block {
-        margin-top: 2rem;
-        width: 90%;
-        display: flex;
-        justify-content: center;
+    .album-visual {
+        width: 80%;
+        margin: 0 auto;
     }
 
-    .catchphrase-ribbon {
-        padding: 0.5rem 1rem !important;
+    .album-watermark {
+        font-size: 3rem !important;
+        top: -1rem !important;
+        left: 0 !important;
+        writing-mode: horizontal-tb !important;
+        opacity: 0.1 !important;
     }
 
-    .ribbon-text {
-        font-size: 0.75rem !important;
+    .album-cover {
+        box-shadow: 10px 10px 0 #000 !important;
     }
 
-    /* Section Headers & Labels Scaling */
     .section-title-group {
-        gap: 0.8rem !important;
-        margin-bottom: 2.5rem !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1.2rem !important;
+        margin-bottom: 3rem !important;
         width: 100%;
-        justify-content: center;
     }
 
     .vertical-label {
@@ -1877,76 +1877,71 @@ body.no-scroll {
     }
 
     /* Video section ribbons fix */
+    .video-section {
+        padding: 5rem 0 7rem !important;
+    }
+
     .video-section::before,
     .video-section::after {
-        font-size: 0.7rem !important;
+        font-size: 0.85rem !important;
         height: 32px !important;
         line-height: 32px !important;
-        width: 350vw !important;
+        width: 400vw !important;
     }
 
     .video-section::before {
-        top: 25px !important;
+        top: 35px !important;
     }
 
     .video-section::after {
-        bottom: 25px !important;
+        bottom: 45px !important;
     }
 
     .review-grid {
         grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+        gap: 1.2rem !important;
     }
 
     .track-name {
-        font-size: 1rem !important;
+        font-size: 1.1rem !important;
+        border-bottom-width: 3px !important;
     }
 
     .track-number {
-        font-size: 1.6rem !important;
+        font-size: 1.8rem !important;
+        opacity: 0.1;
     }
-}
-}
 
-/* Album Info & Review cards */
-.album-info .container {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-}
+    .preview-player {
+        padding: 0.8rem;
+    }
 
-.review-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-}
+    .play-label {
+        font-size: 0.65rem !important;
+    }
 
-.review-item {
-    padding: 1.2rem !important;
-}
+    .tour-item {
+        padding: 1.2rem !important;
+        box-shadow: 6px 6px 0 #000 !important;
+    }
 
-.track-name {
-    font-size: 1.1rem !important;
-}
+    .tour-date {
+        font-size: 1.4rem !important;
+    }
 
-.track-number {
-    font-size: 2rem !important;
-}
+    /* Fix watermark overlaps on small screens */
+    .section-watermark {
+        font-size: 10vw !important;
+        opacity: 0.03 !important;
+        top: 50% !important;
+    }
 
-/* Tour Section */
-.tour-dates {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-}
+    .tour-venue {
+        font-size: 0.9rem !important;
+    }
 
-.tour-item {
-    padding: 1.2rem !important;
-    box-shadow: 6px 6px 0 #000 !important;
-}
-
-.tour-date {
-    font-size: 1.6rem !important;
-}
-
-.tour-venue {
-    font-size: 1rem !important;
-}
+    /* Global Safety */
+    section {
+        overflow: hidden !important;
+    }
 }
