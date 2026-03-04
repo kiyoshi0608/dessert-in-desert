@@ -46,8 +46,15 @@
     --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -55,9 +62,6 @@ body {
     color: var(--color-dark);
     background: var(--color-light);
     line-height: 1.6;
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
 }
 
 /* Global Paper Texture Overlay */
@@ -603,48 +607,51 @@ body.no-scroll {
     overflow: hidden;
 }
 
-/* Stylish Ribbon Dividers - POP PUNK CAUTION STYLE */
+/* Stylish Ribbon Dividers - POP PUNK VINYL TAPE STYLE */
 .video-section::before,
 .video-section::after {
-    content: 'WATCH NOW ★ DESSERT IN DESERT ★ WATCH NOW ★ DESSERT IN DESERT ★';
+    content: 'PLAY NOW ★ SABOTEN ★ DESSERT IN DESERT ★ PLAY NOW ★ SABOTEN ★';
     position: absolute;
-    left: -10%;
-    width: 120%;
-    height: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200vw;
+    /* Wide enough to cover rotations */
+    height: 50px;
     z-index: 20;
     font-family: var(--font-display);
-    font-size: 2.2rem;
-    line-height: 60px;
+    font-size: 1.8rem;
+    line-height: 50px;
     text-align: center;
     white-space: nowrap;
     font-weight: 950;
-    letter-spacing: 0.2em;
-    border-top: 5px solid #000;
-    border-bottom: 5px solid #000;
+    letter-spacing: 0.15em;
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .video-section::before {
-    top: -30px;
-    transform: rotate(-2.5deg);
+    top: 60px;
+    transform: translateX(-50%) rotate(-1.5deg);
     background: repeating-linear-gradient(45deg,
-            var(--color-pop-red),
-            var(--color-pop-red) 20px,
-            #000 20px,
-            #000 40px);
+            var(--color-teal),
+            var(--color-teal) 30px,
+            #111 30px,
+            #111 60px);
     color: #fff;
-    text-shadow: 3px 3px 0 #000;
+    text-shadow: 2px 2px 0 #000;
 }
 
 .video-section::after {
-    bottom: -30px;
-    transform: rotate(2.5deg);
+    bottom: 80px;
+    transform: translateX(-50%) rotate(1.5deg);
     background: repeating-linear-gradient(-45deg,
-            var(--color-pop-yellow),
-            var(--color-pop-yellow) 20px,
-            #000 20px,
-            #000 40px);
-    color: #000;
-    text-shadow: 2px 2px 0 #fff;
+            var(--color-orange),
+            var(--color-orange) 30px,
+            #111 30px,
+            #111 60px);
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
 }
 
 .video-section .section-watermark {
@@ -1789,30 +1796,46 @@ body.no-scroll {
     }
 
     .hero {
-        height: auto;
-        min-height: 100vh;
-        padding-top: 10rem;
+        height: 100vh;
+        min-height: 568px;
+        /* Support smaller devices like iPhone SE */
+        padding-top: 0;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
     }
 
     .hero-main-visual {
-        margin-top: 0;
+        margin-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
         gap: 0;
     }
 
     .artist-logo-img {
-        height: 25vh !important;
-        margin-bottom: -15vh !important;
+        height: auto !important;
+        width: 60vw !important;
+        max-height: 15vh !important;
+        margin-bottom: -8vh !important;
+        z-index: 2;
     }
 
     .album-title-img {
-        height: 35vh !important;
+        height: auto !important;
+        width: 85vw !important;
+        max-height: 25vh !important;
+        z-index: 1;
     }
 
     .hero-footer-block {
-        margin-top: -8vh;
+        margin-top: 2vh;
+        width: 90%;
+        display: flex;
+        justify-content: center;
     }
 
     .video-section {
@@ -1825,9 +1848,17 @@ body.no-scroll {
 
     .video-section::before,
     .video-section::after {
-        font-size: 1.1rem;
-        height: 40px;
-        line-height: 40px;
+        font-size: 1rem;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .video-section::before {
+        top: 30px;
+    }
+
+    .video-section::after {
+        bottom: 40px;
     }
 
     /* Member Review Mobile Adjustments */
@@ -1880,33 +1911,4 @@ body.no-scroll {
     }
 }
 
-/* === LOGO CENTER & RESPONSIVE SIZE (PC/SP) === */
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.logo-container img {
-    display: block;
-    width: min(520px, 78vw);
-    /* PCで大きめ・スマホではみ出さない */
-    height: auto;
-    margin: 0 auto;
-}
-
-/* ロゴ上下の余白 */
-.logo-container {
-    gap: 10px;
-}
-
-/* スマホ微調整 */
-@media (max-width: 600px) {
-    .logo-container img {
-        width: min(560px, 86vw);
-    }
 }
