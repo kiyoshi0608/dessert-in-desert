@@ -16,6 +16,13 @@
 
 <body>
     <nav class="hamburger-menu">
+        <div class="lang-switcher">
+            <button id="langBtn" class="lang-btn" aria-label="Switch to English" data-lang="ja">
+                <span class="lang-label lang-ja">JA</span>
+                <span class="lang-btn-indicator"></span>
+                <span class="lang-label lang-en">EN</span>
+            </button>
+        </div>
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -59,7 +66,7 @@
             <div class="hero-footer-block">
                 <div class="hero-catchphrase">
                     <div class="catchphrase-ribbon">
-                        <span class="ribbon-text">砂漠の中で見つけた、7つのデザート</span>
+                        <span class="ribbon-text" data-i18n="catchphrase">砂漠の中で見つけた、7つのデザート</span>
                     </div>
                 </div>
             </div>
@@ -85,7 +92,7 @@
                     <span class="vertical-label">Album Info</span>
                     <h2 class="section-title">Dessert in Desert<span class="cute-icon">♪</span></h2>
                 </div>
-                <p class="album-description">
+                <p class="album-description" data-i18n="album-desc">
                     2026年、SABOTENが贈る<br>
                     ニューミニアルバム「Dessert in Desert」<br>
                     砂漠のような日々の中で見つけた<br>
@@ -96,18 +103,18 @@
                 <div class="tracklist">
                     <h5>TRACK LIST</h5>
                     <ol>
-                        <li>さよなら、ありがとう</li>
-                        <li>リユニバース</li>
-                        <li>REMEMBER YOU - 忌野 清志郎 cover</li>
-                        <li>何事もなかった顔</li>
-                        <li>タイトロープ</li>
-                        <li>つぼみ</li>
-                        <li>赤春</li>
+                        <li data-i18n="track-1">さよなら、ありがとう</li>
+                        <li data-i18n="track-2">リユニバース</li>
+                        <li data-i18n="track-3">REMEMBER YOU <small>- 忌野 清志郎 cover -</small></li>
+                        <li data-i18n="track-4">何事もなかった顔</li>
+                        <li data-i18n="track-5">タイトロープ</li>
+                        <li data-i18n="track-6">つぼみ</li>
+                        <li data-i18n="track-7">赤春</li>
                     </ol>
                 </div>
                 <div class="album-links">
                     <a href="http://shop.pinefields.jp/?mode=cate&cbid=1082793&csid=0" class="btn btn-primary"
-                        target="_blank" rel="noopener">購入する</a>
+                        target="_blank" rel="noopener" data-i18n="buy-btn">購入する</a>
                 </div>
             </div>
         </div>
@@ -160,7 +167,7 @@
                 <!-- Track 1 -->
                 <div class="review-item">
                     <span class="track-number">01</span>
-                    <h5 class="track-name">さよなら、ありがとう</h5>
+                    <h5 class="track-name" data-i18n="track-1">さよなら、ありがとう</h5>
                     <div class="review-content">
                         <p class="coming-soon">COMING SOON...</p>
                     </div>
@@ -178,7 +185,7 @@
                 <!-- Track 2 -->
                 <div class="review-item">
                     <span class="track-number">02</span>
-                    <h5 class="track-name">リユニバース</h5>
+                    <h5 class="track-name" data-i18n="track-2">リユニバース</h5>
                     <div class="review-content">
                         <p class="coming-soon">COMING SOON...</p>
                     </div>
@@ -196,7 +203,7 @@
                 <!-- Track 3 -->
                 <div class="review-item">
                     <span class="track-number">03</span>
-                    <h5 class="track-name">REMEMBER YOU <small>- 忌野 清志郎 cover -</small></h5>
+                    <h5 class="track-name" data-i18n="track-3">REMEMBER YOU <small>- 忌野 清志郎 cover -</small></h5>
                     <div class="review-content">
                         <p class="coming-soon">COMING SOON...</p>
                     </div>
@@ -214,7 +221,7 @@
                 <!-- Track 4 -->
                 <div class="review-item">
                     <span class="track-number">04</span>
-                    <h5 class="track-name">何事もなかった顔</h5>
+                    <h5 class="track-name" data-i18n="track-4">何事もなかった顔</h5>
                     <div class="review-content">
                         <p class="coming-soon">COMING SOON...</p>
                     </div>
@@ -232,7 +239,7 @@
                 <!-- Track 5 -->
                 <div class="review-item">
                     <span class="track-number">05</span>
-                    <h5 class="track-name">タイトロープ</h5>
+                    <h5 class="track-name" data-i18n="track-5">タイトロープ</h5>
                     <div class="review-content">
                         <p class="coming-soon">COMING SOON...</p>
                     </div>
@@ -250,7 +257,7 @@
                 <!-- Track 6 -->
                 <div class="review-item">
                     <span class="track-number">06</span>
-                    <h5 class="track-name">つぼみ</h5>
+                    <h5 class="track-name" data-i18n="track-6">つぼみ</h5>
                     <div class="review-content">
                         <p class="coming-soon">COMING SOON...</p>
                     </div>
@@ -268,7 +275,7 @@
                 <!-- Track 7 -->
                 <div class="review-item">
                     <span class="track-number">07</span>
-                    <h5 class="track-name">赤春</h5>
+                    <h5 class="track-name" data-i18n="track-7">赤春</h5>
                     <div class="review-content">
                         <p class="coming-soon">COMING SOON...</p>
                     </div>
@@ -307,7 +314,7 @@
                     </div>
                     <div class="comment-bubble">
                         <div class="comment-content">
-                            <p class="comment-text">
+                            <p class="comment-text" data-i18n="comment-kiyoshi">
                                 今作は喜怒哀楽に寄り添うことをテーマに楽曲作り、楽曲選びを慎重に行いました！重すぎず軽すぎない、メンバーがとてもリラックスした状態で録音出来たと思います！<br>そして音質に関してはより人の演奏らしさを大切に、あえて無駄な加工をせずにバンドの空気感が伝わる仕上がりにこだわりました！<br>27年目のSABOTENの最高傑作をぜひ楽しんでください♪
                             </p>
                         </div>
@@ -324,7 +331,7 @@
                     </div>
                     <div class="comment-bubble">
                         <div class="comment-content">
-                            <p class="comment-text">
+                            <p class="comment-text" data-i18n="comment-yasso">
                                 制作の時点で選曲からかなり悩み、最終当初の予定より1曲増え選曲しました。<br>今回はコーラスワークにサケのアイデアも入れて作り上げました。<br>"Dessert in
                                 Desert"<br>1曲ごとに色んな表情があり、アルバムを通して聴き応え抜群です。<br>皆んなに喜んでもらえたら元気になってくれたら嬉しいです。<br>聴いてくれているみんなの顔を想像すると、それだけでワクワクします。
                             </p>
@@ -342,9 +349,10 @@
                     </div>
                     <div class="comment-bubble">
                         <div class="comment-content">
-                            <p class="comment-text">
+                            <p class="comment-text" data-i18n="comment-sakecode">
                                 とにかくおもしろいCDが出来ました。全曲ともそれぞれの表情が引き立ってそれぞれが引き立て合っておもしろさがすごいです。<br>作ってる時から録ってる時の雰囲気も詰める事が出来た気がします。<br>ライブでの表情の変化も楽しみです。<br>Dessert
-                                in Desertで遊びましょう。</p>
+                                in Desertで遊びましょう。
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -356,7 +364,7 @@
     <section class="tour" id="tour">
         <div class="tour-header">
             <h3 class="section-title-large">Dessert in Desert TOUR</h3>
-            <p class="tour-subtitle">全国ツアー開催決定</p>
+            <p class="tour-subtitle" data-i18n="tour-sub">全国ツアー開催決定</p>
             <div class="tour-flyer">
                 <img src="media/tour.jpg" alt="Dessert in Desert TOUR Flyer" class="flyer-img">
             </div>
