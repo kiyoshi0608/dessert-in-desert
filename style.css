@@ -448,8 +448,8 @@ body.no-scroll {
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-top: -10vh;
-    /* Shifted up */
+    margin-top: -22vh;
+    /* Shifted up further */
     margin-bottom: 2vh;
 }
 
@@ -468,7 +468,7 @@ body.no-scroll {
     margin-bottom: -45vh;
     /* Lifted up (was -52vh) */
     z-index: 10;
-    filter: drop-shadow(15px 15px 0 #000) drop-shadow(-15px -15px 0 #000) drop-shadow(15px -15px 0 #000) drop-shadow(-15px 15px 0 #000) drop-shadow(0 40px 80px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(5px 5px 0 #000) drop-shadow(-5px -5px 0 #000) drop-shadow(5px -5px 0 #000) drop-shadow(-5px 5px 0 #000) drop-shadow(0 20px 60px rgba(0, 0, 0, 0.8));
     animation: punkHeroTilt 8s ease-in-out infinite;
 }
 
@@ -491,55 +491,58 @@ body.no-scroll {
 
 .album-type-tag {
     position: absolute;
-    top: -5vh;
-    /* Floating peripheral tag */
-    right: 5%;
-    background: var(--color-pop-red);
+    top: 30%;
+    right: 8%;
+    background: linear-gradient(135deg, #FF8C42, #FF6B35);
     color: #fff;
     font-family: var(--font-accent);
-    font-size: clamp(0.7rem, 2vh, 1.1rem);
-    font-weight: 950;
-    padding: 0.6rem 3rem;
-    border: 5px solid #000;
-    box-shadow: 10px 10px 0 #000;
+    font-size: clamp(0.65rem, 1.6vh, 0.85rem);
+    font-weight: 800;
+    padding: 0.65rem 2.2rem;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 8px 28px rgba(255, 107, 53, 0.55), 0 2px 8px rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
-    letter-spacing: 0.3em;
-    transform: rotate(8deg);
+    letter-spacing: 0.2em;
+    transform: rotate(-5deg);
     white-space: nowrap;
     z-index: 20;
 }
 
-/* Release Stamp - Integrated Poster Label */
+/* Release Stamp - Soft Teal Rounded Card */
 .hero-release-stamp {
     position: absolute;
-    top: 30vh;
-    left: 2%;
-    /* Peripheral placement to clear text */
-    background: #fff;
-    border: 5px solid #000;
-    padding: 1.5vh 4vh;
-    transform: rotate(-12deg);
-    box-shadow: 12px 12px 0 #000;
+    top: 45%;
+    left: 8%;
+    transform: translateY(-50%) rotate(3deg);
+    background: linear-gradient(135deg, #4ECDC4, #2bb5ac);
+    border: none;
+    padding: 1.4vh 3.5vh;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(78, 205, 196, 0.5), 0 3px 12px rgba(0, 0, 0, 0.15);
     z-index: 30;
     text-align: center;
-    animation: stampPulse 4s ease-in-out infinite;
+    animation: none;
 }
 
 .stamp-label {
     font-family: var(--font-accent);
-    font-size: 1.6vh;
-    font-weight: 950;
-    color: var(--color-pop-red);
+    font-size: 0.6rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.85);
     letter-spacing: 0.4em;
     display: block;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
 }
 
 .stamp-date {
     font-family: var(--font-display);
-    font-size: 6vh;
-    /* Scaled to clear title text */
-    color: #000;
-    line-height: 0.85;
+    font-size: 4.5vh;
+    color: #fff;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* --- FOOTER ELEMENTS --- */
@@ -553,27 +556,25 @@ body.no-scroll {
     /* Pulled up further to eliminate bottom clipping for all viewports */
 }
 
-/* Redesigned Catchphrase: Stylish & Pop */
+/* Catchphrase: Warm Gradient Pop Ribbon */
 .catchphrase-ribbon {
-    background: #000;
-    padding: 1.5rem 4rem;
-    /* Refined framing for the new catchphrase */
+    background: linear-gradient(135deg, #FF6B35 0%, #e60012 100%);
+    padding: 1.2rem 4rem;
     position: relative;
-    transform: rotate(-3deg) !important;
-    /* Intentional aggressive tilt */
-    box-shadow: 15px 15px 0 var(--color-pop-yellow);
-    border: 6px solid #000;
+    transform: rotate(-2deg) !important;
+    box-shadow: 0 10px 35px rgba(230, 0, 18, 0.35), 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 14px;
+    border: none;
 }
 
 .ribbon-text {
     font-family: var(--font-body);
     font-size: 2.8vh;
     font-weight: 950;
-    color: var(--color-pop-yellow);
-    /* Neon look over black */
-    letter-spacing: 0.3em;
+    color: #fff;
+    letter-spacing: 0.25em;
     white-space: nowrap;
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* --- ANIMATIONS --- */
@@ -814,14 +815,18 @@ body.no-scroll {
     }
 
     .ribbon-text {
-        font-size: 1.6vh;
-        letter-spacing: 0.15em;
+        font-size: 3.8vw;
+        letter-spacing: 0.12em;
+        white-space: normal !important;
+        text-align: center;
+        line-height: 1.5;
     }
 
     .catchphrase-ribbon {
-        padding: 1rem 2rem;
-        transform: rotate(-3deg) !important;
-        box-shadow: 8px 8px 0 var(--color-pop-yellow);
+        padding: 1rem 1.5rem;
+        transform: rotate(-2deg) !important;
+        box-shadow: 0 8px 22px rgba(230, 0, 18, 0.3);
+        border-radius: 10px;
     }
 
     .video-grid {
@@ -1787,12 +1792,18 @@ body.no-scroll {
     .hero {
         height: auto;
         min-height: 100vh;
-        padding: 4rem 0;
+        padding: 6rem 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        gap: 2rem;
+        gap: 0;
+    }
+
+    .hero-content {
+        height: auto !important;
+        padding-top: 2rem;
+        gap: 3rem !important;
     }
 
     .hero-main-visual {
@@ -1805,34 +1816,51 @@ body.no-scroll {
     }
 
     .artist-logo-img {
-        width: 32vw !important;
-        margin-bottom: 0 !important;
-        filter: drop-shadow(5px 5px 0 #000);
+        width: 70vw !important;
+        height: auto !important;
+        margin-bottom: 1rem !important;
+        filter: drop-shadow(8px 8px 0 #000);
     }
 
     .album-title-img {
-        width: 75vw !important;
-        margin-bottom: 0 !important;
-        filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.5));
+        width: 95vw !important;
+        height: auto !important;
+        margin-bottom: 1rem !important;
+        filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
     }
 
     .album-type-tag {
-        top: 2% !important;
-        right: 18% !important;
+        top: 5% !important;
+        right: 3% !important;
         font-size: 0.55rem !important;
-        padding: 0.2rem 0.6rem !important;
+        padding: 0.35rem 1.2rem !important;
+        border-radius: 50px !important;
+        border: none !important;
+        background: linear-gradient(135deg, #FF8C42, #FF6B35) !important;
+        color: #fff !important;
+        box-shadow: 0 5px 14px rgba(255, 107, 53, 0.45) !important;
+        transform: rotate(-4deg) !important;
     }
 
     .hero-release-stamp {
         position: relative !important;
         top: auto !important;
         left: auto !important;
-        margin-top: 2rem;
-        transform: rotate(-3deg) !important;
+        transform: rotate(2deg) !important;
+        margin-top: 1.2rem;
+        border-radius: 14px !important;
+        padding: 0.8rem 2rem !important;
+        display: inline-block;
+        border: none !important;
+        background: linear-gradient(135deg, #4ECDC4, #2bb5ac) !important;
+        box-shadow: 0 8px 22px rgba(78, 205, 196, 0.4) !important;
+        text-align: center !important;
     }
 
     .stamp-label {
-        font-size: 0.65rem !important;
+        font-size: 0.6rem !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+        letter-spacing: 0.35em !important;
     }
 
     .album-info .container {
@@ -1867,9 +1895,13 @@ body.no-scroll {
     }
 
     .vertical-label {
-        font-size: 0.5rem !important;
-        padding: 0.6rem 0.3rem !important;
-        margin-top: 0.1rem;
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        font-size: 0.6rem !important;
+        padding: 0.4rem 1.5rem !important;
+        letter-spacing: 0.2em !important;
+        margin-top: 0 !important;
+        align-self: center;
     }
 
     .section-title {
@@ -1938,6 +1970,45 @@ body.no-scroll {
 
     .tour-venue {
         font-size: 0.9rem !important;
+    }
+
+    /* Hero footer - catchphrase visible on mobile */
+    .hero-footer-block {
+        margin-top: 2rem !important;
+        padding: 0 1rem;
+        width: 100%;
+        align-items: center;
+    }
+
+    /* Review cards - orange accent on mobile */
+    .review-item {
+        border-left: 5px solid var(--color-orange) !important;
+        border-top: 2px solid #000 !important;
+        border-right: 2px solid #000 !important;
+        border-bottom: 2px solid #000 !important;
+        box-shadow: 4px 4px 0 #000 !important;
+    }
+
+    /* Comments section spacing */
+    .member-comments {
+        padding: 2rem 0 3rem !important;
+    }
+
+    .comments-subtitle {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.5rem !important;
+        padding: 0 1rem;
+        letter-spacing: 0.05em !important;
+    }
+
+    .comment-card {
+        gap: 1rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .comment-text {
+        font-size: 0.92rem !important;
+        line-height: 1.75 !important;
     }
 
     /* Global Safety */
