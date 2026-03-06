@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'tour-sub': '"Dessert in Desert" Japan Tour — Coming Soon',
             'track-1': 'Goodbye, Thank You',
             'track-2': 'Reuniverse',
-            'track-3': 'Remember You <small>(Kiyoshi Oshino Cover)</small>',
+            'track-3': 'REMEMBER YOU <small>- Kiyoshiro Imawano Cover -</small>',
             'track-4': 'A Straight Face',
             'track-5': 'Tightrope',
             'track-6': 'The Bud',

@@ -918,22 +918,23 @@ body.no-scroll {
         font-size: 2.2vh;
     }
 
-    /* リボンテキスト: モバイルで折り返し許可・コンパクト化 */
+    /* リボンテキスト: 英語など長い文字列を折り返してはみ出し防止 */
     .ribbon-text {
-        font-size: 3.4vw;
-        letter-spacing: 0.08em;
-        white-space: nowrap;
+        font-size: 3.2vw;
+        letter-spacing: 0.06em;
+        white-space: normal;
         text-align: center;
-        line-height: 1.4;
+        line-height: 1.35;
+        word-break: break-word;
     }
 
     .catchphrase-ribbon {
-        padding: 0.8rem 1.2rem;
+        padding: 0.7rem 1rem;
         transform: rotate(-2deg) !important;
         box-shadow: 0 8px 22px rgba(230, 0, 18, 0.3);
         border-radius: 10px;
         /* メニューボタンに被らないよう右マージン確保 */
-        max-width: calc(100vw - 120px);
+        max-width: calc(100vw - 110px);
     }
 
     .video-grid {
@@ -1930,20 +1931,27 @@ body.no-scroll {
 
     /* Hero Fixes - Fit in 1 screen */
     .hero {
-        height: auto;
+        height: 100vh;
         min-height: 100vh;
-        padding: 2.5rem 1rem 2rem;
+        max-height: 100vh;
+        padding: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         gap: 0;
+        overflow: hidden;
     }
 
     .hero-content {
-        height: auto !important;
-        padding-top: 0.5rem;
-        gap: 1rem !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        padding-top: 3vh;
+        gap: 0 !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
     }
 
     .hero-main-visual {
@@ -1955,30 +1963,33 @@ body.no-scroll {
         gap: 0;
     }
 
-    /* SABOTENロゴ: 画面上部に大きく */
+    /* SABOTENロゴ: 上から詰めてコンパクトに */
     .artist-logo-img {
-        width: 62vw !important;
+        width: 55vw !important;
         height: auto !important;
-        margin-bottom: -3vh !important;
-        filter: drop-shadow(3px 3px 0 #000) drop-shadow(-3px -3px 0 #000) drop-shadow(0 15px 40px rgba(0,0,0,0.8));
+        margin-bottom: -2vh !important;
+        filter: drop-shadow(3px 3px 0 #000) drop-shadow(-3px -3px 0 #000) drop-shadow(0 10px 30px rgba(0,0,0,0.8));
         z-index: 12;
         position: relative;
+        margin-top: 0 !important;
     }
 
-    /* アルバムタイトルロゴ: メインビジュアルとして大きく */
+    /* アルバムタイトルロゴ: 縦スペースを節約 */
     .album-title-img {
-        width: 90vw !important;
+        width: 88vw !important;
         height: auto !important;
+        max-height: 50vh !important;
+        object-fit: contain;
         margin-bottom: 0 !important;
-        filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.9));
+        filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.9));
     }
 
     /* MINI ALBUMタグ: 画面右内側に収める */
     .album-type-tag {
-        top: 12% !important;
+        top: 10% !important;
         right: 4% !important;
-        font-size: 0.5rem !important;
-        padding: 0.3rem 0.9rem !important;
+        font-size: 0.48rem !important;
+        padding: 0.28rem 0.8rem !important;
         border-radius: 50px !important;
         border: none !important;
         background: linear-gradient(135deg, #FF8C42, #FF6B35) !important;
@@ -1987,30 +1998,30 @@ body.no-scroll {
         transform: rotate(-4deg) !important;
     }
 
-    /* リリーススタンプ: 中央下部に相対配置 */
+    /* リリーススタンプ: 小さくして隙間を詰める */
     .hero-release-stamp {
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: rotate(2deg) !important;
-        margin-top: 1.5rem !important;
-        border-radius: 16px !important;
-        padding: 0.9rem 2.5rem !important;
+        margin-top: 1.5vh !important;
+        border-radius: 14px !important;
+        padding: 0.7rem 2rem !important;
         display: inline-block;
         border: none !important;
         background: linear-gradient(135deg, #4ECDC4, #2bb5ac) !important;
-        box-shadow: 0 10px 28px rgba(78, 205, 196, 0.5) !important;
+        box-shadow: 0 8px 22px rgba(78, 205, 196, 0.5) !important;
         text-align: center !important;
     }
 
     .stamp-label {
-        font-size: 0.55rem !important;
+        font-size: 0.5rem !important;
         color: rgba(255, 255, 255, 0.85) !important;
-        letter-spacing: 0.35em !important;
+        letter-spacing: 0.3em !important;
     }
 
     .stamp-date {
-        font-size: 5.5vw !important;
+        font-size: 5vw !important;
     }
 
     .album-info .container {
@@ -2141,9 +2152,9 @@ body.no-scroll {
         font-size: 0.9rem !important;
     }
 
-    /* Hero footer - catchphrase visible on mobile */
+    /* Hero footer - catchphrase を画面内に収める */
     .hero-footer-block {
-        margin-top: 0.8rem !important;
+        margin-top: 1.2vh !important;
         padding: 0 1rem;
         width: 100%;
         align-items: center;
