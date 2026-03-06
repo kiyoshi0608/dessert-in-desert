@@ -912,12 +912,13 @@ body.no-scroll {
         gap: 3.5rem;
     }
 
+    /* ビデオシャドウは画面内に収める */
     .video-placeholder {
-        box-shadow: 10px 10px 0 var(--color-pop-red);
+        box-shadow: 5px 5px 0 var(--color-pop-red);
     }
 
     .video-placeholder.making {
-        box-shadow: 10px 10px 0 var(--color-pop-yellow);
+        box-shadow: 5px 5px 0 var(--color-pop-yellow);
     }
 }
 
@@ -957,6 +958,22 @@ body.no-scroll {
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        bottom: 4vh; /* iOSツールバーより上に確実に表示 */
+        z-index: 25;
+    }
+
+    .scroll-indicator span {
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+    }
+
+    .scroll-line {
+        height: 2.5vh;
+    }
 }
 
 /* --- Global Section Elements --- */
@@ -1939,20 +1956,20 @@ body.no-scroll {
         flex-shrink: 0;
     }
 
-    /* SABOTENロゴ: 高さ基準で小さく制御 */
+    /* SABOTENロゴ: ユーザー要望遲り大きく */
     .artist-logo-img {
-        height: 11vh !important;
+        height: 18vh !important;
         width: auto !important;
         max-width: 80vw !important;
-        margin-bottom: -1vh !important;
-        filter: drop-shadow(3px 3px 0 #000) drop-shadow(-3px -3px 0 #000) drop-shadow(0 8px 20px rgba(0,0,0,0.8));
+        margin-bottom: -2vh !important;
+        filter: drop-shadow(3px 3px 0 #000) drop-shadow(-3px -3px 0 #000) drop-shadow(0 10px 30px rgba(0,0,0,0.9));
         z-index: 12;
         position: relative;
     }
 
-    /* Dessert in Desertロゴ: 大きすぎず縦幅を固定 */
+    /* Dessert in Desertロゴ: SABOTENを大きくした分縮小 */
     .album-title-img {
-        height: 38vh !important;
+        height: 34vh !important;
         width: auto !important;
         max-width: 92vw !important;
         margin-bottom: 0 !important;
@@ -1962,20 +1979,25 @@ body.no-scroll {
     /* アルバムタイトル・ロゴの拡張局 */
     .album-title-wrap {
         flex-shrink: 0;
+        position: relative;
     }
 
-    /* MINI ALBUMタグ: 入れ子にのっそり */
+    /* MINI ALBUMタグ:
+       ハンバーガーボタンは right:1.2rem に固定されている
+       タグを左側内部に移して被りを回避 */
     .album-type-tag {
-        top: 7% !important;
-        right: 3% !important;
+        top: auto !important;
+        bottom: 8% !important;
+        right: auto !important;
+        left: 5% !important;
         font-size: 0.46rem !important;
-        padding: 0.26rem 0.75rem !important;
+        padding: 0.25rem 0.75rem !important;
         border-radius: 50px !important;
         border: none !important;
         background: linear-gradient(135deg, #FF8C42, #FF6B35) !important;
         color: #fff !important;
         box-shadow: 0 4px 12px rgba(255, 107, 53, 0.5) !important;
-        transform: rotate(-4deg) !important;
+        transform: rotate(3deg) !important;
         letter-spacing: 0.12em !important;
     }
 
