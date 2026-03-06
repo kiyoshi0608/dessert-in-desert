@@ -890,35 +890,7 @@ body.no-scroll {
 
 /* --- MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .artist-logo-img {
-        height: 28vh !important;
-        margin-bottom: -4vh;
-    }
-
-    .album-title-img {
-        height: 45vh !important;
-    }
-
-    .hero-release-stamp {
-        bottom: -5vh;
-        left: 2%;
-        padding: 0.8vh 2vh;
-        transform: rotate(-5deg);
-    }
-
-    .stamp-date {
-        font-size: 4vh;
-    }
-
-    .btn-hero-premium {
-        padding: 1.2vh 6vh;
-    }
-
-    .btn-label-jp {
-        font-size: 2.2vh;
-    }
-
-    /* リボンテキスト: 英語など長い文字列を折り返してはみ出し防止 */
+    /* リボンテキスト: 英語など長い文字列を折り返しはみ出し防止 */
     .ribbon-text {
         font-size: 3.2vw;
         letter-spacing: 0.06em;
@@ -929,11 +901,10 @@ body.no-scroll {
     }
 
     .catchphrase-ribbon {
-        padding: 0.7rem 1rem;
+        padding: 0.6rem 1rem;
         transform: rotate(-2deg) !important;
         box-shadow: 0 8px 22px rgba(230, 0, 18, 0.3);
         border-radius: 10px;
-        /* メニューボタンに被らないよう右マージン確保 */
         max-width: calc(100vw - 110px);
     }
 
@@ -1929,99 +1900,112 @@ body.no-scroll {
         position: relative;
     }
 
-    /* Hero Fixes - Fit in 1 screen */
+    /* ══════════════════════════════════════
+       HERO: 1画面内に全要素を収める
+       dvh = ブラウザChromeを除いた実際の表示領域
+    ══════════════════════════════════════ */
     .hero {
-        height: 100vh;
+        height: 100dvh;
         min-height: 100vh;
-        max-height: 100vh;
         padding: 0;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        gap: 0;
         overflow: hidden;
     }
 
     .hero-content {
-        height: 100vh !important;
-        max-height: 100vh !important;
-        padding-top: 3vh;
+        width: 100%;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        padding-top: 2vh;
+        padding-bottom: 1vh;
         gap: 0 !important;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        box-sizing: border-box;
     }
 
     .hero-main-visual {
-        margin-top: 0;
+        margin-top: 0 !important;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0;
+        flex-shrink: 0;
     }
 
-    /* SABOTENロゴ: 上から詰めてコンパクトに */
+    /* SABOTENロゴ: 高さ基準で小さく制御 */
     .artist-logo-img {
-        width: 55vw !important;
-        height: auto !important;
-        margin-bottom: -2vh !important;
-        filter: drop-shadow(3px 3px 0 #000) drop-shadow(-3px -3px 0 #000) drop-shadow(0 10px 30px rgba(0,0,0,0.8));
+        height: 11vh !important;
+        width: auto !important;
+        max-width: 80vw !important;
+        margin-bottom: -1vh !important;
+        filter: drop-shadow(3px 3px 0 #000) drop-shadow(-3px -3px 0 #000) drop-shadow(0 8px 20px rgba(0,0,0,0.8));
         z-index: 12;
         position: relative;
-        margin-top: 0 !important;
     }
 
-    /* アルバムタイトルロゴ: 縦スペースを節約 */
+    /* Dessert in Desertロゴ: 大きすぎず縦幅を固定 */
     .album-title-img {
-        width: 88vw !important;
-        height: auto !important;
-        max-height: 50vh !important;
-        object-fit: contain;
+        height: 38vh !important;
+        width: auto !important;
+        max-width: 92vw !important;
         margin-bottom: 0 !important;
-        filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.9));
+        filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 1));
     }
 
-    /* MINI ALBUMタグ: 画面右内側に収める */
+    /* アルバムタイトル・ロゴの拡張局 */
+    .album-title-wrap {
+        flex-shrink: 0;
+    }
+
+    /* MINI ALBUMタグ: 入れ子にのっそり */
     .album-type-tag {
-        top: 10% !important;
-        right: 4% !important;
-        font-size: 0.48rem !important;
-        padding: 0.28rem 0.8rem !important;
+        top: 7% !important;
+        right: 3% !important;
+        font-size: 0.46rem !important;
+        padding: 0.26rem 0.75rem !important;
         border-radius: 50px !important;
         border: none !important;
         background: linear-gradient(135deg, #FF8C42, #FF6B35) !important;
         color: #fff !important;
         box-shadow: 0 4px 12px rgba(255, 107, 53, 0.5) !important;
         transform: rotate(-4deg) !important;
+        letter-spacing: 0.12em !important;
     }
 
-    /* リリーススタンプ: 小さくして隙間を詰める */
+    /* Release Stamp: 場所を取り、コンパクトに */
     .hero-release-stamp {
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: rotate(2deg) !important;
-        margin-top: 1.5vh !important;
+        margin-top: 1.8vh !important;
         border-radius: 14px !important;
-        padding: 0.7rem 2rem !important;
+        padding: 0.6rem 2rem !important;
         display: inline-block;
         border: none !important;
         background: linear-gradient(135deg, #4ECDC4, #2bb5ac) !important;
         box-shadow: 0 8px 22px rgba(78, 205, 196, 0.5) !important;
         text-align: center !important;
+        flex-shrink: 0;
     }
 
     .stamp-label {
-        font-size: 0.5rem !important;
+        font-size: 0.48rem !important;
         color: rgba(255, 255, 255, 0.85) !important;
-        letter-spacing: 0.3em !important;
+        letter-spacing: 0.28em !important;
+        margin-bottom: 0.15rem;
     }
 
     .stamp-date {
-        font-size: 5vw !important;
+        font-size: 4.8vw !important;
+        line-height: 1 !important;
     }
 
     .album-info .container {
@@ -2152,12 +2136,13 @@ body.no-scroll {
         font-size: 0.9rem !important;
     }
 
-    /* Hero footer - catchphrase を画面内に収める */
+    /* Hero footer - リボンを画面内の下部に収める */
     .hero-footer-block {
-        margin-top: 1.2vh !important;
-        padding: 0 1rem;
+        margin-top: 1.5vh !important;
+        padding: 0 0.8rem;
         width: 100%;
         align-items: center;
+        flex-shrink: 0;
     }
 
     /* Track list - left align on mobile */
