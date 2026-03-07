@@ -1008,9 +1008,20 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
-    /* リボンが下部を占領するためSCROLLは非表示 */
+    /* リボンまで内容があるため、下層渗れ防止 */
     .scroll-indicator {
-        display: none !important;
+        bottom: 3.5vh;
+        z-index: 25;
+    }
+
+    .scroll-indicator span {
+        font-size: 0.55rem;
+        letter-spacing: 0.45em;
+        color: rgba(255,255,255,0.55);
+    }
+
+    .scroll-line {
+        height: 2vh;
     }
 }
 
@@ -2040,10 +2051,10 @@ body.no-scroll {
         -webkit-backdrop-filter: blur(10px) !important;
     }
 
-    /* Release Stamp: ミニマルダークガラス — モバイル */
+    /* Release Stamp: bottom:22vhに上げてSCROLLのスペースを確保 */
     .hero-release-stamp {
         position: absolute !important;
-        bottom: 13vh !important;
+        bottom: 22vh !important;
         top: auto !important;
         left: 50% !important;
         transform: translateX(-50%) rotate(-1deg) !important;
@@ -2069,10 +2080,10 @@ body.no-scroll {
         margin-bottom: 0.1rem;
     }
 
-    /* hero-footer-block: 画面下層に絶対配置 */
+    /* hero-footer-block: bottom:12vhに上げてSCROLL分のスペースを確保 */
     .hero-footer-block {
         position: absolute !important;
-        bottom: 3vh !important;
+        bottom: 12vh !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
