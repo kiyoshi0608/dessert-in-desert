@@ -436,8 +436,8 @@ body.no-scroll {
     inset: 0;
     background-image: url('media/cover.jpg');
     background-size: cover;
-    background-position: center bottom;
-    filter: brightness(0.6) saturate(1.1);
+    background-position: center 20%;
+    filter: brightness(0.72) saturate(1.2) contrast(1.05);
     transform: scale(1.02);
     z-index: 1;
 }
@@ -492,32 +492,47 @@ body.no-scroll {
     animation-delay: 0.5s;
 }
 
-@keyframes floatingIcon {
-    from {
-        transform: translateY(0) rotate(-10deg);
-    }
-
-    to {
-        transform: translateY(-30px) rotate(15deg);
-    }
+/* フロートアイコン: 参考デザインの方向性に合わず非表示 */
+.float-icon {
+    display: none;
 }
 
+/* エディトリアルグラデーション: 上部暗・中央クリア・下部暗 */
 .hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0.85) 100%);
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(5, 5, 15, 0.55) 0%,
+            rgba(5, 5, 15, 0.2) 20%,
+            transparent 35%,
+            transparent 55%,
+            rgba(5, 5, 15, 0.4) 75%,
+            rgba(5, 5, 15, 0.75) 100%
+        );
     z-index: 3;
 }
 
+/* レインボーラインバー: 上部にカラーアクセント */
 .hero::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.15;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+        to right,
+        #e60012 0%,
+        #FF6B35 25%,
+        #e6ff00 50%,
+        #4ECDC4 75%,
+        #e60012 100%
+    );
+    z-index: 100;
     pointer-events: none;
-    z-index: 2;
 }
 
 /* --- Hero Watermark (Ref: glamapple style) --- */
@@ -971,23 +986,23 @@ body.no-scroll {
 
 .scroll-indicator span {
     font-family: var(--font-accent);
-    font-size: 1vh;
-    font-weight: 900;
-    letter-spacing: 0.3em;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.5em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
 }
 
 .scroll-line {
-    width: 2px;
+    width: 1px;
     height: 4vh;
-    background: linear-gradient(to bottom, var(--color-orange), transparent);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
 }
 
+/* スクロールインジケーター下部配置 */
 .scroll-indicator {
     position: absolute;
     bottom: 0.5vh;
-    /* Tucked to absolute bottom edge */
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -995,13 +1010,13 @@ body.no-scroll {
 
 @media (max-width: 768px) {
     .scroll-indicator {
-        bottom: 4vh; /* iOSツールバーより上に確実に表示 */
+        bottom: 4vh;
         z-index: 25;
     }
 
     .scroll-indicator span {
-        font-size: 0.7rem;
-        letter-spacing: 0.25em;
+        font-size: 0.6rem;
+        letter-spacing: 0.4em;
     }
 
     .scroll-line {
