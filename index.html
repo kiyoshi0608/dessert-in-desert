@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Luckiest+Guy&family=Permanent+Marker&family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@400;600;800&family=Dela+Gothic+One&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4.0">
+    <link rel="stylesheet" href="style.css?v=4.1">
 </head>
 
 <body>
@@ -46,7 +46,7 @@
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <!-- Main Integrated Visual Block -->
+            <!-- Logos Only -->
             <div class="hero-main-visual">
                 <div class="branding-group">
                     <img src="media/SABOTEN_LOGO_2025_white.png" alt="SABOTEN" class="artist-logo-img">
@@ -55,14 +55,15 @@
                         <span class="album-type-tag">mini album</span>
                     </div>
                 </div>
-
-                <div class="hero-release-stamp">
-                    <span class="stamp-label">NEW RELEASE</span>
-                    <span class="stamp-date">2026.05.10</span>
-                </div>
             </div>
 
-            <!-- Integrated Catchphrase Block -->
+            <!-- Stamp: hero-contentの直接子 → hero-content(position:relative)基準で配置 -->
+            <div class="hero-release-stamp">
+                <span class="stamp-label">NEW RELEASE</span>
+                <span class="stamp-date">2026.05.10</span>
+            </div>
+
+            <!-- Catchphrase: 最下部フルブリード帯 -->
             <div class="hero-footer-block">
                 <div class="hero-catchphrase">
                     <div class="catchphrase-ribbon">

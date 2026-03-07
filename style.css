@@ -515,22 +515,15 @@ body.no-scroll {
     z-index: 3;
 }
 
-/* レインボーラインバー: 上部にカラーアクセント */
+/* 極細ホワイトライン: シンプルで上品なアクセント */
 .hero::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(
-        to right,
-        #e60012 0%,
-        #FF6B35 25%,
-        #e6ff00 50%,
-        #4ECDC4 75%,
-        #e60012 100%
-    );
+    height: 2px;
+    background: rgba(255, 255, 255, 0.35);
     z-index: 100;
     pointer-events: none;
 }
@@ -610,53 +603,53 @@ body.no-scroll {
     animation: floatingHero 6s ease-in-out infinite;
 }
 
-/* MINI ALBUM tag: シティポップ・ネオンピルバッジ */
+/* MINI ALBUM tag: ミニマルホワイトピル */
 .album-type-tag {
     position: absolute;
     top: 30%;
     right: 8%;
-    background: rgba(10, 10, 20, 0.75);
-    color: #4ECDC4;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
     font-family: var(--font-accent);
-    font-size: clamp(0.58rem, 1.4vh, 0.75rem);
-    font-weight: 800;
-    padding: 0.5rem 1.6rem;
+    font-size: clamp(0.55rem, 1.3vh, 0.72rem);
+    font-weight: 700;
+    padding: 0.45rem 1.4rem;
     border-radius: 100px;
-    border: 1.5px solid #4ECDC4;
-    box-shadow: 0 0 14px rgba(78, 205, 196, 0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: none;
     text-transform: uppercase;
-    letter-spacing: 0.35em;
-    transform: rotate(-5deg);
+    letter-spacing: 0.45em;
+    transform: rotate(-4deg);
     white-space: nowrap;
     z-index: 20;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-/* NEW RELEASE stamp: グラスモーフィズム ティールカード */
+/* NEW RELEASE stamp: ミニマルダークガラス */
 .hero-release-stamp {
     position: absolute;
     top: 45%;
     left: 8%;
     transform: translateY(-50%) rotate(2deg);
-    background: rgba(78, 205, 196, 0.12);
-    border: 2px solid rgba(78, 205, 196, 0.85);
+    background: rgba(10, 10, 15, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 1.2vh 3.5vh;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(78, 205, 196, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+    border-radius: 8px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.07);
     z-index: 30;
     text-align: center;
     animation: none;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
 .stamp-label {
     font-family: var(--font-accent);
-    font-size: 0.6rem;
-    font-weight: 800;
-    color: #4ECDC4;
-    letter-spacing: 0.45em;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.55em;
     display: block;
     margin-bottom: 0.3rem;
     text-transform: uppercase;
@@ -668,7 +661,7 @@ body.no-scroll {
     color: #fff;
     line-height: 0.9;
     letter-spacing: 0.06em;
-    text-shadow: 0 0 20px rgba(78, 205, 196, 0.6), 0 2px 8px rgba(0,0,0,0.3);
+    text-shadow: none;
 }
 
 /* --- FOOTER ELEMENTS --- */
@@ -2027,56 +2020,56 @@ body.no-scroll {
         position: relative;
     }
 
-    /* MINI ALBUM: ネオンピルバッジ — モバイル */
+    /* MINI ALBUM: ミニマルwhiteピル — モバイル */
     .album-type-tag {
         top: 8% !important;
         right: 4% !important;
         bottom: auto !important;
         left: auto !important;
-        font-size: 0.46rem !important;
-        padding: 0.3rem 1rem !important;
+        font-size: 0.44rem !important;
+        padding: 0.28rem 0.9rem !important;
         border-radius: 100px !important;
-        border: 1.5px solid #4ECDC4 !important;
-        background: rgba(10, 10, 20, 0.75) !important;
-        color: #4ECDC4 !important;
-        box-shadow: 0 0 10px rgba(78, 205, 196, 0.3) !important;
-        transform: rotate(-5deg) !important;
-        letter-spacing: 0.3em !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        background: rgba(255,255,255,0.1) !important;
+        color: rgba(255,255,255,0.9) !important;
+        box-shadow: none !important;
+        transform: rotate(-4deg) !important;
+        letter-spacing: 0.4em !important;
         font-family: var(--font-accent) !important;
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
     }
 
-    /* Release Stamp: 画面下部に絶対配置 ― コンサートポスターモード */
+    /* Release Stamp: ミニマルダークガラス — モバイル */
     .hero-release-stamp {
         position: absolute !important;
         bottom: 13vh !important;
         top: auto !important;
         left: 50% !important;
-        transform: translateX(-50%) rotate(-2deg) !important;
+        transform: translateX(-50%) rotate(-1deg) !important;
         margin-top: 0 !important;
-        border-radius: 10px !important;
-        padding: 0.55rem 2.2rem !important;
+        border-radius: 8px !important;
+        padding: 0.55rem 2.4rem !important;
         display: inline-block !important;
-        border: 2px solid rgba(78, 205, 196, 0.85) !important;
-        background: rgba(10, 10, 25, 0.55) !important;
-        box-shadow: 0 0 30px rgba(78, 205, 196, 0.15), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.18) !important;
+        background: rgba(10, 10, 15, 0.65) !important;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.3) !important;
         text-align: center !important;
         white-space: nowrap !important;
-        backdrop-filter: blur(14px) !important;
-        -webkit-backdrop-filter: blur(14px) !important;
+        backdrop-filter: blur(18px) !important;
+        -webkit-backdrop-filter: blur(18px) !important;
         z-index: 20 !important;
     }
 
     .stamp-label {
         font-family: var(--font-accent) !important;
-        font-size: 0.5rem !important;
-        color: #4ECDC4 !important;
-        letter-spacing: 0.5em !important;
+        font-size: 0.48rem !important;
+        color: rgba(255,255,255,0.5) !important;
+        letter-spacing: 0.55em !important;
         margin-bottom: 0.1rem;
     }
 
-    /* hero-footer-block: 画面下層に絶対配置 ― リボンストリップ */
+    /* hero-footer-block: 画面下層に絶対配置 */
     .hero-footer-block {
         position: absolute !important;
         bottom: 3vh !important;
@@ -2095,7 +2088,7 @@ body.no-scroll {
         font-size: 5.5vw !important;
         color: #fff !important;
         line-height: 1 !important;
-        text-shadow: 0 0 20px rgba(78, 205, 196, 0.7), 0 2px 8px rgba(0,0,0,0.4) !important;
+        text-shadow: none !important;
         letter-spacing: 0.05em !important;
     }
 
