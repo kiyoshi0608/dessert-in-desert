@@ -938,22 +938,28 @@ body.no-scroll {
 
 /* --- MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    /* リボンテキスト: 英語など長い文字列を折り返しはみ出し防止 */
+    /* リボンテキスト: 全幅帯用に大きく */
     .ribbon-text {
-        font-size: 3.2vw;
-        letter-spacing: 0.06em;
-        white-space: normal;
+        font-size: 3.8vw;
+        letter-spacing: 0.18em;
+        white-space: nowrap;
         text-align: center;
-        line-height: 1.35;
-        word-break: break-word;
+        line-height: 1;
+        word-break: keep-all;
     }
 
+    /* リボン: フル幅ストリップ ― コンサートポスター底帯 */
     .catchphrase-ribbon {
-        padding: 0.6rem 1rem;
-        transform: rotate(-2deg) !important;
-        box-shadow: 0 8px 22px rgba(230, 0, 18, 0.3);
-        border-radius: 10px;
-        max-width: calc(100vw - 110px);
+        width: 108% !important;
+        max-width: none !important;
+        margin-left: -4% !important;
+        padding: 0.85rem 2rem !important;
+        border-radius: 0 !important;
+        transform: rotate(-1.5deg) !important;
+        box-shadow: 0 -4px 24px rgba(230, 0, 18, 0.35) !important;
+        border: none !important;
+        border-top: 1px solid rgba(255,255,255,0.2) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.2) !important;
     }
 
     .video-grid {
@@ -1009,18 +1015,9 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
+    /* リボンが下部を占領するためSCROLLは非表示 */
     .scroll-indicator {
-        bottom: 4vh;
-        z-index: 25;
-    }
-
-    .scroll-indicator span {
-        font-size: 0.6rem;
-        letter-spacing: 0.4em;
-    }
-
-    .scroll-line {
-        height: 2.5vh;
+        display: none !important;
     }
 }
 
@@ -2050,46 +2047,56 @@ body.no-scroll {
         -webkit-backdrop-filter: blur(8px) !important;
     }
 
-    /* Release Stamp: グラスモーフィズム ティール — モバイル */
+    /* Release Stamp: 画面下部に絶対配置 ― コンサートポスターモード */
     .hero-release-stamp {
-        position: relative !important;
+        position: absolute !important;
+        bottom: 13vh !important;
         top: auto !important;
-        left: auto !important;
-        transform: rotate(2deg) !important;
-        margin-top: 1.5vh !important;
+        left: 50% !important;
+        transform: translateX(-50%) rotate(-2deg) !important;
+        margin-top: 0 !important;
         border-radius: 10px !important;
-        padding: 0.5rem 1.8rem !important;
-        display: inline-block;
+        padding: 0.55rem 2.2rem !important;
+        display: inline-block !important;
         border: 2px solid rgba(78, 205, 196, 0.85) !important;
-        background: rgba(78, 205, 196, 0.12) !important;
-        box-shadow: 0 6px 24px rgba(78, 205, 196, 0.2) !important;
+        background: rgba(10, 10, 25, 0.55) !important;
+        box-shadow: 0 0 30px rgba(78, 205, 196, 0.15), inset 0 1px 0 rgba(255,255,255,0.08) !important;
         text-align: center !important;
-        flex-shrink: 0;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
+        white-space: nowrap !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        z-index: 20 !important;
     }
 
     .stamp-label {
         font-family: var(--font-accent) !important;
         font-size: 0.5rem !important;
         color: #4ECDC4 !important;
-        letter-spacing: 0.4em !important;
-        margin-bottom: 0.12rem;
+        letter-spacing: 0.5em !important;
+        margin-bottom: 0.1rem;
     }
 
-    /* hero-footer-block */
+    /* hero-footer-block: 画面下層に絶対配置 ― リボンストリップ */
     .hero-footer-block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        position: absolute !important;
+        bottom: 3vh !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        z-index: 18 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
     .stamp-date {
-        font-size: 5vw !important;
+        font-size: 5.5vw !important;
         color: #fff !important;
         line-height: 1 !important;
-        text-shadow: 0 0 15px rgba(78, 205, 196, 0.6) !important;
+        text-shadow: 0 0 20px rgba(78, 205, 196, 0.7), 0 2px 8px rgba(0,0,0,0.4) !important;
+        letter-spacing: 0.05em !important;
     }
 
     .album-info .container {
