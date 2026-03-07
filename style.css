@@ -1962,8 +1962,8 @@ body.no-scroll {
         width: 100%;
         height: 100dvh !important;
         max-height: 100dvh !important;
-        padding-top: 2vh;
-        padding-bottom: 1vh;
+        padding-top: 1vh;
+        padding-bottom: 0;
         gap: 0 !important;
         display: flex;
         flex-direction: column;
@@ -1982,22 +1982,22 @@ body.no-scroll {
         flex-shrink: 0;
     }
 
-    /* SABOTENロゴ: ユーザー要望遲り大きく */
+    /* SABOTENロゴ: 大小を大幅アップして存在感を出す */
     .artist-logo-img {
-        height: 18vh !important;
+        height: 26vh !important;
         width: auto !important;
-        max-width: 80vw !important;
-        margin-bottom: -2vh !important;
-        filter: drop-shadow(3px 3px 0 #000) drop-shadow(-3px -3px 0 #000) drop-shadow(0 10px 30px rgba(0,0,0,0.9));
+        max-width: 85vw !important;
+        margin-bottom: -3vh !important;
+        filter: drop-shadow(4px 4px 0 #000) drop-shadow(-4px -4px 0 #000) drop-shadow(0 12px 35px rgba(0,0,0,1));
         z-index: 12;
         position: relative;
     }
 
     /* Dessert in Desertロゴ: SABOTENを大きくした分縮小 */
     .album-title-img {
-        height: 34vh !important;
+        height: 30vh !important;
         width: auto !important;
-        max-width: 92vw !important;
+        max-width: 95vw !important;
         margin-bottom: 0 !important;
         filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 1));
     }
@@ -2009,13 +2009,13 @@ body.no-scroll {
     }
 
     /* MINI ALBUMタグ:
-       ハンバーガーボタンは right:1.2rem に固定されている
-       タグを左側内部に移して被りを回避 */
+       SABOTENが26vhなのでalbum-title-wrapは
+       ヘッダーボタンより下に開始するため右上がOK */
     .album-type-tag {
-        top: auto !important;
-        bottom: 8% !important;
-        right: auto !important;
-        left: 5% !important;
+        top: 8% !important;
+        right: 4% !important;
+        bottom: auto !important;
+        left: auto !important;
         font-size: 0.46rem !important;
         padding: 0.25rem 0.75rem !important;
         border-radius: 50px !important;
@@ -2023,7 +2023,7 @@ body.no-scroll {
         background: linear-gradient(135deg, #FF8C42, #FF6B35) !important;
         color: #fff !important;
         box-shadow: 0 4px 12px rgba(255, 107, 53, 0.5) !important;
-        transform: rotate(3deg) !important;
+        transform: rotate(-4deg) !important;
         letter-spacing: 0.12em !important;
     }
 
