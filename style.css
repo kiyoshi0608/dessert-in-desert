@@ -1718,6 +1718,314 @@ body.no-scroll {
     }
 }
 
+/* ===== MINI GAME SECTION ===== */
+.mini-game {
+    background-color: var(--color-sand);
+    background-image:
+        radial-gradient(#C2A686 2px, transparent 0),
+        radial-gradient(#B89772 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.mini-game .container {
+    max-width: 800px;
+}
+
+.game-container {
+    width: 100%;
+    height: 500px;
+    background: #fff;
+    border: 4px solid #000;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 10px 10px 0 #000;
+    margin-top: 3rem;
+}
+
+.game-screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-light);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+}
+
+.game-screen.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#game-play-screen {
+    background: transparent;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.game-stats {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 2px solid #000;
+    z-index: 20;
+}
+
+.game-score {
+    color: var(--color-pop-red);
+}
+
+#game-area {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--color-sky) 0%, #D4EBF8 100%);
+}
+
+#game-player {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    z-index: 15;
+}
+
+#player-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 0 #000);
+}
+
+.game-item {
+    position: absolute;
+    font-size: 3rem;
+    transform: translateX(-50%);
+    user-select: none;
+    pointer-events: none;
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+.mobile-controls {
+    width: 100%;
+    height: 80px;
+    background: #000;
+    display: flex;
+    z-index: 20;
+    display: none; /* Hide on desktop, uncomment to see */
+}
+
+.control-btn {
+    flex: 1;
+    background: #222;
+    border: none;
+    border-right: 2px solid #000;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.control-btn:last-child {
+    border-right: none;
+}
+
+.control-btn:active {
+    background: #444;
+}
+
+.game-title, .game-over-title, .game-clear-title {
+    font-family: var(--font-ja-title);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: 3px 3px 0 #000;
+    line-height: 1.4;
+}
+
+.game-title { color: var(--color-pop-yellow); }
+.game-over-title { color: var(--color-pop-red); }
+.game-clear-title { color: var(--color-pop-green); }
+
+.game-desc {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+/* Character Selection */
+.character-select {
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.select-title {
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-darker);
+    margin-bottom: 0.8rem;
+}
+
+.char-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.char-option {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.char-option:hover {
+    transform: scale(1.1);
+}
+
+.char-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.char-option img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    padding: 5px;
+    background: #fff;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+.char-option span {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+
+.char-option input:checked + img {
+    border-color: var(--color-pop-red);
+    background: var(--color-pop-yellow);
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.5);
+}
+
+.char-option input:checked ~ span {
+    background: var(--color-pop-red);
+    color: #fff;
+    border-color: var(--color-pop-red);
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        height: 60vh;
+        min-height: 500px;
+    }
+    
+    .mobile-controls {
+        display: flex;
+    }
+    
+    #game-player {
+        width: 60px;
+        height: 60px;
+        bottom: 10px;
+    }
+    
+    .game-item {
+        font-size: 2.4rem;
+    }
+    
+    .game-title {
+        font-size: 1.8rem;
+    }
+}
+
+.game-rules-box {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 12px;
+    box-shadow: 6px 6px 0 #000;
+}
+
+.rules-title {
+    font-family: var(--font-ja-title);
+    font-size: 1.4rem;
+    color: var(--color-pop-red);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.rules-list li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.rules-list li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--color-teal);
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .game-rules-box {
+        padding: 1.5rem;
+    }
+    .rules-title {
+        font-size: 1.2rem;
+    }
+    .rules-list {
+        font-size: 0.95rem;
+    }
+}
+
 /* ===== TOUR SECTION ===== */
 .tour {
     padding: var(--spacing-xl) 0;

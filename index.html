@@ -38,6 +38,7 @@
             <li><a href="#video">VIDEO</a></li>
             <li><a href="#review">REVIEW</a></li>
             <li><a href="#comments">MESSAGE</a></li>
+            <li><a href="#game">GAME</a></li>
             <li><a href="#tour">TOUR</a></li>
         </ul>
     </div>
@@ -360,6 +361,85 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Game Section -->
+    <section class="mini-game" id="game">
+        <div class="container">
+            <div class="section-title-group centered">
+                <span class="vertical-label">PLAY TIME</span>
+                <h3 class="section-title">MINI GAME <span class="cute-icon">🌵</span></h3>
+            </div>
+            
+            <div class="game-container">
+                <div id="game-start-screen" class="game-screen active">
+                    <h4 class="game-title">砂漠のデザートキャッチ</h4>
+                    <p class="game-desc" style="margin-bottom: 0.5rem;" data-i18n="game-desc">落ちてくるデザートをキャッチしよう！<br>サボテンには気をつけてね！<br>7つのデザートを集めるとクリア！</p>
+                    
+                    <div class="character-select">
+                        <p class="select-title" data-i18n="game-select-char">キャラクターを選んでね</p>
+                        <div class="char-options">
+                            <label class="char-option">
+                                <input type="radio" name="player-char" value="media/キヨシ.png" checked>
+                                <img src="media/キヨシ.png" alt="キヨシ">
+                                <span>キヨシ</span>
+                            </label>
+                            <label class="char-option">
+                                <input type="radio" name="player-char" value="media/ヤッソー.png">
+                                <img src="media/ヤッソー.png" alt="ヤッソー">
+                                <span>ヤッソー</span>
+                            </label>
+                            <label class="char-option">
+                                <input type="radio" name="player-char" value="media/サケ.png">
+                                <img src="media/サケ.png" alt="サケ">
+                                <span>サケ</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="game-start-btn" class="btn btn-primary" data-i18n="game-start" style="margin-top: 1rem;">GAME START</button>
+                </div>
+                
+                <div id="game-play-screen" class="game-screen">
+                    <div class="game-stats">
+                        <div class="game-score">Dessert: <span id="game-score-val">0</span> / 7</div>
+                        <div class="game-lives">Life: <span id="game-lives-val">❤️❤️❤️</span></div>
+                    </div>
+                    <div id="game-area">
+                        <div id="game-player">
+                            <img src="media/キヨシ.png" alt="Player" id="player-img">
+                        </div>
+                    </div>
+                    <div class="mobile-controls">
+                        <button id="btn-left" class="control-btn">◀</button>
+                        <button id="btn-right" class="control-btn">▶</button>
+                    </div>
+                </div>
+
+                <div id="game-over-screen" class="game-screen">
+                    <h4 class="game-over-title">GAME OVER</h4>
+                    <p class="game-desc" data-i18n="game-over-desc">サボテンに当たっちゃった...</p>
+                    <button id="game-retry-btn" class="btn btn-primary" data-i18n="game-retry">RETRY</button>
+                </div>
+
+                <div id="game-clear-screen" class="game-screen">
+                    <h4 class="game-clear-title">CLEAR!</h4>
+                    <p class="game-desc" data-i18n="game-clear-desc">7つのデザートを見つけた！<br>おめでとう！限定壁紙をプレゼント！</p>
+                    <a href="media/haikei.png" download="SABOTEN_Dessert_in_Desert_Wallpaper.png" class="btn btn-primary" style="margin-top: 15px;" data-i18n="game-dl">壁紙をダウンロード</a>
+                    <button id="game-replay-btn" class="btn btn-secondary" style="margin-top: 10px;" data-i18n="game-play-again">もう一度プレイ</button>
+                </div>
+            </div>
+
+            <div class="game-rules-box">
+                <h4 class="rules-title" data-i18n="game-rules-title">【遊び方＆ルール】</h4>
+                <ul class="rules-list">
+                    <li data-i18n="game-rule-1">空から降ってくるデザート🍰🍩をキャッチしよう！</li>
+                    <li data-i18n="game-rule-2">左右キー（スマホは画面下の◀▶）でキャラクターを動かします。</li>
+                    <li data-i18n="game-rule-3">サボテン🌵に当たるとライフ減少！3回当たるとゲームオーバー。</li>
+                    <li data-i18n="game-rule-4">7つのデザートを集めるとクリア！特製壁紙をプレゼント🎁</li>
+                </ul>
             </div>
         </div>
     </section>
