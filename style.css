@@ -1704,7 +1704,7 @@ body.no-scroll {
     .comment-card.reverse {
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 0;
     }
 
     .comment-bubble::before,
@@ -1715,6 +1715,14 @@ body.no-scroll {
     .member-info {
         width: 100%;
         max-width: 250px;
+        gap: 0;
+        margin-bottom: -1rem;
+    }
+    
+    .member-image {
+        width: 170px;
+        margin-top: -1.5rem;
+        margin-bottom: -1.5rem;
     }
 }
 
@@ -1952,8 +1960,12 @@ body.no-scroll {
 
 @media (max-width: 768px) {
     .game-container {
-        height: 60vh;
-        min-height: 500px;
+        height: 65vh;
+        min-height: 540px;
+    }
+    
+    .game-screen {
+        padding: 1rem;
     }
     
     .mobile-controls {
@@ -1971,7 +1983,33 @@ body.no-scroll {
     }
     
     .game-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .game-desc {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .select-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .char-options {
+        gap: 1rem;
+    }
+
+    .char-option img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .char-option span {
+        font-size: 0.8rem;
+        padding: 2px 6px;
     }
 }
 
