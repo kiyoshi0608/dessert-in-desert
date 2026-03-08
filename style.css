@@ -1615,6 +1615,23 @@ body.no-scroll {
     flex-shrink: 0;
     width: 160px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.member-image {
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.6));
+    transform: rotate(3deg);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.member-image:hover {
+    transform: scale(1.1) rotate(-3deg);
 }
 
 .member-name-group {
