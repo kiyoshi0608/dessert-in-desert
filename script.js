@@ -101,6 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'game-rule-3': 'サボテン🌵に当たるとライフ減少！3回当たるとゲームオーバー。',
             'game-rule-4': '7つのデザートを集めるとクリア！特製壁紙をプレゼント🎁',
             'game-select-char': 'キャラクターを選んでね',
+            'bundle-desc': '数量限定！特別なバンドルセットのご予約・ご購入はこちらから！',
+            'bundle-buy-btn': 'バンドルセットを予約・購入する',
             'btn-label': 'EN',
             'btn-aria': 'Switch to English',
             'html-lang': 'ja'
@@ -133,6 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'game-rule-3': 'Hitting a cactus 🌵 costs a life! 3 hits and game over.',
             'game-rule-4': 'Collect 7 desserts to clear the game! Win a special wallpaper! 🎁',
             'game-select-char': 'Choose your character',
+            'bundle-desc': 'Limited quantity! Pre-order/purchase your special bundle set here!',
+            'bundle-buy-btn': 'Pre-order / Purchase Bundle Set',
             'btn-label': 'JA',
             'btn-aria': '日本語に切り替え',
             'html-lang': 'en'
