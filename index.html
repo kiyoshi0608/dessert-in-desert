@@ -401,7 +401,7 @@
             <div class="game-container">
                 <div id="game-start-screen" class="game-screen active">
                     <h4 class="game-title">砂漠のデザートキャッチ</h4>
-                    <p class="game-desc" style="margin-bottom: 0.5rem;" data-i18n="game-desc">落ちてくるデザートをキャッチしよう！<br>サボテンには気をつけてね！<br>7つのデザートを集めるとクリア！</p>
+                    <p class="game-desc" style="margin-bottom: 0.5rem;" data-i18n="game-desc">落ちてくるデザートをキャッチしてスコアを稼ごう！<br>サボテンには気をつけてね！<br>7種類のデザートをすべて集めるとクリア！</p>
                     
                     <div class="character-select">
                         <p class="select-title" data-i18n="game-select-char">キャラクターを選んでね</p>
@@ -429,7 +429,18 @@
                 
                 <div id="game-play-screen" class="game-screen">
                     <div class="game-stats">
-                        <div class="game-score">Dessert: <span id="game-score-val">0</span> / 7</div>
+                        <div class="game-score">
+                            <div style="font-size: 0.8rem; margin-bottom: 2px;">SCORE: <span id="game-score-val">0</span></div>
+                            <div id="dessert-slots" style="display: flex; gap: 4px; font-size: 1.2rem;">
+                                <span class="slot" style="opacity:0.3; filter:grayscale(1);" data-type="🍰">❓</span>
+                                <span class="slot" style="opacity:0.3; filter:grayscale(1);" data-type="🍮">❓</span>
+                                <span class="slot" style="opacity:0.3; filter:grayscale(1);" data-type="🍨">❓</span>
+                                <span class="slot" style="opacity:0.3; filter:grayscale(1);" data-type="🍩">❓</span>
+                                <span class="slot" style="opacity:0.3; filter:grayscale(1);" data-type="🧁">❓</span>
+                                <span class="slot" style="opacity:0.3; filter:grayscale(1);" data-type="🍪">❓</span>
+                                <span class="slot" style="opacity:0.3; filter:grayscale(1);" data-type="🥞">❓</span>
+                            </div>
+                        </div>
                         <div class="game-lives">Life: <span id="game-lives-val">❤️❤️❤️</span></div>
                     </div>
                     <div id="game-area">
@@ -451,7 +462,7 @@
 
                 <div id="game-clear-screen" class="game-screen">
                     <h4 class="game-clear-title">CLEAR!</h4>
-                    <p class="game-desc" data-i18n="game-clear-desc">7つのデザートを見つけた！<br>おめでとう！限定壁紙をプレゼント！</p>
+                    <p class="game-desc" data-i18n="game-clear-desc">7種類のデザートをコンプリートした！<br>おめでとう！限定壁紙をプレゼント！</p>
                     <a href="media/haikei.png" download="SABOTEN_Dessert_in_Desert_Wallpaper.png" class="btn btn-primary" style="margin-top: 15px;" data-i18n="game-dl">壁紙をダウンロード</a>
                     <button id="game-replay-btn" class="btn btn-secondary" style="margin-top: 10px;" data-i18n="game-play-again">もう一度プレイ</button>
                 </div>
@@ -463,7 +474,7 @@
                     <li data-i18n="game-rule-1">空から降ってくるデザート🍰🍩をキャッチしよう！</li>
                     <li data-i18n="game-rule-2">左右キー（スマホは画面下の◀▶）でキャラクターを動かします。</li>
                     <li data-i18n="game-rule-3">サボテン🌵に当たるとライフ減少！3回当たるとゲームオーバー。</li>
-                    <li data-i18n="game-rule-4">7つのデザートを集めるとクリア！特製壁紙をプレゼント🎁</li>
+                    <li data-i18n="game-rule-4">7種類のデザートをコンプリートするとクリア！特製壁紙をプレゼント🎁</li>
                 </ul>
             </div>
         </div>
