@@ -1622,7 +1622,7 @@ body.no-scroll {
 }
 
 .member-image {
-    width: 140px;
+    width: 170px;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.6));
@@ -1720,7 +1720,7 @@ body.no-scroll {
     }
     
     .member-image {
-        width: 170px;
+        width: 190px;
         margin-top: -1.5rem;
         margin-bottom: -1.5rem;
     }
