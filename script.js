@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'game-rule-2': '左右キー（スマホは画面下の◀▶）でキャラクターを動かします。',
             'game-rule-3': 'サボテン🌵に当たるとライフ減少！3回当たるとゲームオーバー。',
             'game-rule-4': '7種類のデザートをコンプリートするとクリア！特製壁紙をプレゼント🎁',
+            'game-rule-5': '💩や🚽に当たると一発でゲームオーバー！気をつけて！',
             'game-select-char': 'キャラクターを選んでね',
             'bundle-desc': '数量限定！特別なバンドルセットのご予約・ご購入はこちらから！',
             'bundle-buy-btn': 'バンドルセットを予約・購入する',
@@ -138,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'game-rule-2': 'Use Left/Right keys (or ◀▶ buttons on mobile) to move your character.',
             'game-rule-3': 'Hitting a cactus 🌵 costs a life! 3 hits and game over.',
             'game-rule-4': 'Collect all 7 different desserts to clear the game! Win a special wallpaper! 🎁',
+            'game-rule-5': 'Hitting 💩 or 🚽 means instant game over! Watch out!',
             'game-select-char': 'Choose your character',
             'bundle-desc': 'Limited quantity! Pre-order/purchase your special bundle set here!',
             'bundle-buy-btn': 'Pre-order / Purchase Bundle Set',
@@ -230,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let spawnRate = 1200;
         let gameTime = 0;
         const dessertTypes = ['🍰', '🍮', '🍨', '🍩', '🧁', '🍪', '🥞'];
+        const deathTypes = ['💩', '🚽'];
         
         // Initial setup for UI (Replacing the "Dessert 0 / 7" with Slots)
         const gameScoreContainer = document.querySelector('.game-score');
@@ -318,13 +321,24 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const spawnItem = () => {
             if (gameState !== 'play') return;
-            const isCactus = Math.random() > 0.55; // 45% chance for dessert
-            const typeValue = isCactus ? '🌵' : dessertTypes[Math.floor(Math.random() * dessertTypes.length)];
+            const rand = Math.random();
+            let typeValue, itemType;
+            
+            if (rand < 0.08) { // 8% chance for instant death item
+                typeValue = deathTypes[Math.floor(Math.random() * deathTypes.length)];
+                itemType = 'death';
+            } else if (rand < 0.5) { // 42% chance for cactus
+                typeValue = '🌵';
+                itemType = 'cactus';
+            } else { // 50% chance for dessert
+                typeValue = dessertTypes[Math.floor(Math.random() * dessertTypes.length)];
+                itemType = 'dessert';
+            }
             
             const itemEl = document.createElement('div');
-            itemEl.className = 'game-item ' + (isCactus ? 'item-cactus' : 'item-dessert');
+            itemEl.className = 'game-item item-' + itemType;
             itemEl.innerHTML = typeValue;
-            itemEl.dataset.type = isCactus ? 'cactus' : 'dessert';
+            itemEl.dataset.type = itemType;
             itemEl.dataset.value = typeValue;
             
             const startX = Math.random() * 80 + 10;
@@ -337,12 +351,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 x: startX, 
                 baseX: startX,
                 y: -10, 
-                type: itemEl.dataset.type, 
+                type: itemType, 
                 value: typeValue,
                 // Speed increases over time
                 speed: Math.random() * 0.4 + 0.8 + (gameTime * 0.0005),
                 swaySpeed: Math.random() * 0.05 + 0.02,
-                swayAmount: isCactus ? 0 : Math.random() * 6 + 2, // Only desserts sway
+                swayAmount: itemType === 'cactus' ? 0 : Math.random() * 6 + 2, // Only desserts sway
                 timeOffset: Math.random() * 100
             });
             
@@ -405,6 +419,25 @@ document.addEventListener('DOMContentLoaded', () => {
                             clearTimeout(spawnTimeout);
                             setTimeout(() => showScreen('game-over-screen'), 500);
                         }
+                    } else if (item.type === 'death') {
+                        // Instant Game Over
+                        lives = 0;
+                        updateUI();
+                        item.el.innerHTML = '💥';
+                        createFloatingText('WASTED!', playerX, 80, '#000');
+                        
+                        gameArea.animate([
+                            { transform: 'translate(5px, 5px)' },
+                            { transform: 'translate(-5px, -5px)' },
+                            { transform: 'translate(-5px, 5px)' },
+                            { transform: 'translate(5px, -5px)' },
+                            { transform: 'translate(0, 0)' }
+                        ], { duration: 500, iterations: 1 });
+
+                        player.style.filter = 'grayscale(1) brightness(0.5)';
+                        gameState = 'over';
+                        clearTimeout(spawnTimeout);
+                        setTimeout(() => showScreen('game-over-screen'), 800);
                     } else {
                         // Dessert Caught!
                         if (!collectedTypes.has(item.value)) {
