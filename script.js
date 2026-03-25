@@ -102,8 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'game-rule-4': '7種類のデザートをコンプリートするとクリア！特製壁紙をプレゼント🎁',
             'game-rule-5': '💩や🚽に当たると一発でゲームオーバー！気をつけて！',
             'game-select-char': 'キャラクターを選んでね',
-            'bundle-desc': '数量限定！特別なバンドルセットのご予約・ご購入はこちらから！',
-            'bundle-buy-btn': 'バンドルセットを予約・購入する',
+            'preorder-desc': 'CDの先行予約がスタート！<br>先行販売期間中にご購入いただいた皆様に「ジャケットステッカー」プレゼント！',
+            'preorder-buy-btn': 'CDを先行予約する',
             'name-kiyoshi': 'キヨシ',
             'name-yasso': 'ヤッソー',
             'name-sakecode': 'サケ・スイーツ',
@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'game-rule-4': 'Collect all 7 different desserts to clear the game! Win a special wallpaper! 🎁',
             'game-rule-5': 'Hitting 💩 or 🚽 means instant game over! Watch out!',
             'game-select-char': 'Choose your character',
-            'bundle-desc': 'Limited quantity! Pre-order/purchase your special bundle set here!',
-            'bundle-buy-btn': 'Pre-order / Purchase Bundle Set',
+            'preorder-desc': 'CD pre-orders are now open!<br>Get an exclusive "Jacket Sticker" if you order during the pre-order period!',
+            'preorder-buy-btn': 'Pre-order CD Now',
             'name-kiyoshi': 'KIYOSHI',
             'name-yasso': 'YASSO',
             'name-sakecode': 'SAKE-SWEETS',
@@ -219,13 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const livesVal = document.getElementById('game-lives-val');
         const btnLeft = document.getElementById('btn-left');
         const btnRight = document.getElementById('btn-right');
+        const btnJump = document.getElementById('btn-jump');
         
         let gameState = 'start';
         let score = 0;
         let lives = 3;
         let items = [];
         let playerX = 50;
+        let playerY = 0;
         let playerVelocity = 0;
+        let playerVelocityY = 0;
+        let isJumping = false;
+        let isFever = false;
+        let feverTimeout;
         let collectedTypes = new Set();
         let gameLoop;
         let spawnTimeout;
@@ -233,6 +239,62 @@ document.addEventListener('DOMContentLoaded', () => {
         let gameTime = 0;
         const dessertTypes = ['🍰', '🍮', '🍨', '🍩', '🧁', '🍪', '🥞'];
         const deathTypes = ['💩', '🚽'];
+
+        // Audio System Setup
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let actx;
+        const playSound = (type) => {
+            if (!actx) actx = new AudioContext();
+            if (actx.state === 'suspended') actx.resume();
+            const osc = actx.createOscillator();
+            const gain = actx.createGain();
+            osc.connect(gain);
+            gain.connect(actx.destination);
+            const now = actx.currentTime;
+            
+            if (type === 'catch') {
+                osc.type = 'sine'; osc.frequency.setValueAtTime(800, now); osc.frequency.exponentialRampToValueAtTime(1500, now + 0.1);
+                gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now); osc.stop(now + 0.1);
+            } else if (type === 'hit') {
+                osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.exponentialRampToValueAtTime(40, now + 0.2);
+                gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+                osc.start(now); osc.stop(now + 0.2);
+            } else if (type === 'clear') {
+                osc.type = 'triangle'; osc.frequency.setValueAtTime(440, now); osc.frequency.setValueAtTime(554, now + 0.1); osc.frequency.setValueAtTime(659, now + 0.2); osc.frequency.setValueAtTime(880, now + 0.3);
+                gain.gain.setValueAtTime(0.3, now); gain.gain.linearRampToValueAtTime(0, now + 0.8);
+                osc.start(now); osc.stop(now + 0.8);
+            } else if (type === 'over') {
+                osc.type = 'square'; osc.frequency.setValueAtTime(200, now); osc.frequency.linearRampToValueAtTime(50, now + 0.5);
+                gain.gain.setValueAtTime(0.3, now); gain.gain.linearRampToValueAtTime(0, now + 0.5);
+                osc.start(now); osc.stop(now + 0.5);
+            } else if (type === 'fever') {
+                osc.type = 'sine'; osc.frequency.setValueAtTime(880, now); osc.frequency.linearRampToValueAtTime(1760, now + 0.3);
+                gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                osc.start(now); osc.stop(now + 0.3);
+            } else if (type === 'jump') {
+                osc.type = 'sine'; osc.frequency.setValueAtTime(300, now); osc.frequency.exponentialRampToValueAtTime(600, now + 0.1);
+                gain.gain.setValueAtTime(0.1, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now); osc.stop(now + 0.1);
+            }
+        };
+
+        const createParticles = (x, y, color) => {
+            for(let i=0; i<8; i++) {
+                const p = document.createElement('div');
+                p.style.position = 'absolute'; p.style.left = `${x}%`; p.style.top = `${y}%`;
+                p.style.width = '10px'; p.style.height = '10px'; p.style.backgroundColor = color;
+                p.style.borderRadius = '50%'; p.style.pointerEvents = 'none'; p.style.zIndex = '101';
+                gameArea.appendChild(p);
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * 50 + 20;
+                const tx = Math.cos(angle) * dist; const ty = Math.sin(angle) * dist;
+                p.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0)`, opacity: 0 }
+                ], { duration: 600, easing: 'ease-out' }).onfinish = () => p.remove();
+            }
+        };
         
         // Initial setup for UI (Replacing the "Dessert 0 / 7" with Slots)
         const gameScoreContainer = document.querySelector('.game-score');
@@ -311,9 +373,15 @@ document.addEventListener('DOMContentLoaded', () => {
             items.forEach(item => item.el.remove());
             items = [];
             playerX = 50;
+            playerY = 0;
             playerVelocity = 0;
+            playerVelocityY = 0;
+            isJumping = false;
+            isFever = false;
+            clearTimeout(feverTimeout);
             gameTime = 0;
             player.style.left = `${playerX}%`;
+            player.style.bottom = `calc(${playerY}% + 20px)`;
             player.style.filter = '';
             player.style.transform = 'translateX(-50%)';
             updateUI();
@@ -324,13 +392,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const rand = Math.random();
             let typeValue, itemType;
             
-            if (rand < 0.08) { // 8% chance for instant death item
+            if (rand < 0.05) { // 5% fever star
+                typeValue = '⭐';
+                itemType = 'fever';
+            } else if (rand < 0.13) { // 8% chance for instant death item
                 typeValue = deathTypes[Math.floor(Math.random() * deathTypes.length)];
                 itemType = 'death';
-            } else if (rand < 0.5) { // 42% chance for cactus
+            } else if (rand < 0.45) { // 32% chance for cactus
                 typeValue = '🌵';
                 itemType = 'cactus';
-            } else { // 50% chance for dessert
+            } else { // 55% chance for dessert
                 typeValue = dessertTypes[Math.floor(Math.random() * dessertTypes.length)];
                 itemType = 'dessert';
             }
@@ -340,6 +411,10 @@ document.addEventListener('DOMContentLoaded', () => {
             itemEl.innerHTML = typeValue;
             itemEl.dataset.type = itemType;
             itemEl.dataset.value = typeValue;
+            if (itemType === 'fever') {
+                itemEl.style.filter = 'drop-shadow(0 0 10px #ffea00)';
+                itemEl.style.animation = 'pulse 1s infinite alternate';
+            }
             
             const startX = Math.random() * 80 + 10;
             itemEl.style.left = `${startX}%`;
@@ -396,66 +471,85 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.el.style.left = `${item.x}%`;
                 
                 if (checkCollision(item)) {
-                    if (item.type === 'cactus') {
-                        lives--;
-                        updateUI();
-                        item.el.innerHTML = '💥';
-                        createFloatingText('-1 LIFE!', playerX, 80, '#e60012');
-                        
-                        // Screen shake effect
-                        gameArea.animate([
-                            { transform: 'translate(2px, 2px)' },
-                            { transform: 'translate(-2px, -2px)' },
-                            { transform: 'translate(-2px, 2px)' },
-                            { transform: 'translate(2px, -2px)' },
-                            { transform: 'translate(0, 0)' }
-                        ], { duration: 300, iterations: 1 });
+                    if (item.type === 'fever') {
+                        playSound('fever');
+                        createParticles(playerX, 100 - playerY, '#ffea00');
+                        createFloatingText('FEVER!', playerX, 80 - playerY, '#ffea00');
+                        isFever = true;
+                        clearTimeout(feverTimeout);
+                        player.style.filter = 'drop-shadow(0 0 10px #ff00ff) hue-rotate(90deg)';
+                        feverTimeout = setTimeout(() => { isFever = false; player.style.filter = ''; }, 5000);
+                    } else if (item.type === 'cactus') {
+                        if (!isFever) {
+                            playSound('hit');
+                            lives--;
+                            updateUI();
+                            item.el.innerHTML = '💥';
+                            createFloatingText('-1 LIFE!', playerX, 80 - playerY, '#e60012');
+                            
+                            gameArea.animate([
+                                { transform: 'translate(4px, 4px)' }, { transform: 'translate(-4px, -4px)' },
+                                { transform: 'translate(-4px, 4px)' }, { transform: 'translate(0, 0)' }
+                            ], { duration: 300, iterations: 1 });
 
-                        player.style.filter = 'brightness(0) invert(1) sepia(100%) saturate(100%) hue-rotate(0deg)';
-                        setTimeout(() => { if(gameState==='play') player.style.filter = ''; }, 200);
-                        
-                        if (lives <= 0) {
-                            gameState = 'over';
-                            clearTimeout(spawnTimeout);
-                            setTimeout(() => showScreen('game-over-screen'), 500);
+                            player.style.filter = 'brightness(0) invert(1) sepia(100%) saturate(100%) hue-rotate(0deg)';
+                            setTimeout(() => { if(gameState==='play') player.style.filter = isFever ? 'drop-shadow(0 0 10px #ff00ff) hue-rotate(90deg)' : ''; }, 200);
+                            
+                            if (lives <= 0) {
+                                playSound('over');
+                                gameState = 'over';
+                                clearTimeout(spawnTimeout);
+                                setTimeout(() => showScreen('game-over-screen'), 500);
+                            }
+                        } else {
+                            playSound('catch');
+                            score += 100;
+                            createParticles(playerX, 100 - playerY, '#00ff00');
+                            createFloatingText('FEVER KICK!', playerX, 80 - playerY, '#ff00ff');
                         }
                     } else if (item.type === 'death') {
-                        // Instant Game Over
-                        lives = 0;
-                        updateUI();
-                        item.el.innerHTML = '💥';
-                        createFloatingText('WASTED!', playerX, 80, '#000');
-                        
-                        gameArea.animate([
-                            { transform: 'translate(5px, 5px)' },
-                            { transform: 'translate(-5px, -5px)' },
-                            { transform: 'translate(-5px, 5px)' },
-                            { transform: 'translate(5px, -5px)' },
-                            { transform: 'translate(0, 0)' }
-                        ], { duration: 500, iterations: 1 });
+                        if (!isFever) {
+                            playSound('hit');
+                            lives = 0;
+                            updateUI();
+                            item.el.innerHTML = '💥';
+                            createFloatingText('WASTED!', playerX, 80 - playerY, '#000');
+                            
+                            gameArea.animate([
+                                { transform: 'translate(6px, 6px)' }, { transform: 'translate(-6px, -6px)' },
+                                { transform: 'translate(-6px, 6px)' }, { transform: 'translate(0, 0)' }
+                            ], { duration: 500, iterations: 1 });
 
-                        player.style.filter = 'grayscale(1) brightness(0.5)';
-                        gameState = 'over';
-                        clearTimeout(spawnTimeout);
-                        setTimeout(() => showScreen('game-over-screen'), 800);
+                            player.style.filter = 'grayscale(1) brightness(0.5)';
+                            playSound('over');
+                            gameState = 'over';
+                            clearTimeout(spawnTimeout);
+                            setTimeout(() => showScreen('game-over-screen'), 800);
+                        } else {
+                            playSound('catch');
+                            score += 100;
+                            createParticles(playerX, 100 - playerY, '#ff00ff');
+                        }
                     } else {
-                        // Dessert Caught!
+                        playSound('catch');
+                        createParticles(playerX, 100 - playerY, '#ff99cc');
                         if (!collectedTypes.has(item.value)) {
                             collectedTypes.add(item.value);
                             score += 500;
-                            createFloatingText('NEW +500!', playerX, 80, '#46c700');
+                            createFloatingText('NEW +500!', playerX, 80 - playerY, '#46c700');
                         } else {
-                            score += 100;
-                            createFloatingText('+100', playerX, 80, '#e6ff00');
+                            const pts = isFever ? 200 : 100;
+                            score += pts;
+                            createFloatingText(`+${pts}`, playerX, 80 - playerY, '#e6ff00');
                         }
                         updateUI();
                         item.el.style.transform = 'translate(-50%, -50%) scale(2)';
                         item.el.style.opacity = '0';
                         
                         if (collectedTypes.size >= 7) {
+                            playSound('clear');
                             gameState = 'clear';
                             clearTimeout(spawnTimeout);
-                            // Flash effect
                             const flash = document.createElement('div');
                             flash.style.position = 'absolute';
                             flash.style.inset = '0';
@@ -475,7 +569,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // Velocity-based Player Movement
-            const accel = window.innerWidth < 768 ? 0.7 : 0.9;
+            const moveSpeed = isFever ? 1.5 : 1;
+            const accel = (window.innerWidth < 768 ? 0.7 : 0.9) * moveSpeed;
             if (isLeftPressed) playerVelocity -= accel;
             if (isRightPressed) playerVelocity += accel;
             
@@ -492,10 +587,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 playerVelocity = 0;
             }
 
+            // Jump Physics
+            if (isJumpPressed && !isJumping) {
+                isJumping = true;
+                playerVelocityY = 15;
+                playSound('jump');
+            }
+            playerY += playerVelocityY;
+            playerVelocityY -= 1.2; // Gravity
+            if (playerY <= 0) {
+                playerY = 0;
+                playerVelocityY = 0;
+                isJumping = false;
+            }
+
             // Tilt effect based on movement
             const tilt = playerVelocity * 2;
             player.style.transform = `translateX(-50%) rotate(${tilt}deg)`;
             player.style.left = `${playerX}%`;
+            player.style.bottom = `calc(${playerY}% + 20px)`;
             
             if (gameState === 'play') {
                 gameLoop = requestAnimationFrame(updateGame);
@@ -518,29 +628,43 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let isLeftPressed = false;
         let isRightPressed = false;
+        let isJumpPressed = false;
         
         window.addEventListener('keydown', (e) => {
              if (e.key === 'ArrowLeft') { isLeftPressed = true; e.preventDefault(); }
              if (e.key === 'ArrowRight') { isRightPressed = true; e.preventDefault(); }
+             if (e.key === 'ArrowUp' || e.key === ' ') { isJumpPressed = true; e.preventDefault(); }
         });
         window.addEventListener('keyup', (e) => {
              if (e.key === 'ArrowLeft') isLeftPressed = false;
              if (e.key === 'ArrowRight') isRightPressed = false;
+             if (e.key === 'ArrowUp' || e.key === ' ') isJumpPressed = false;
         });
         
-        const addHoldEvents = (btn, isLeft) => {
-            const press = (e) => { e.preventDefault(); if(isLeft) isLeftPressed=true; else isRightPressed=true; };
-            const release = (e) => { e.preventDefault(); if(isLeft) isLeftPressed=false; else isRightPressed=false; };
+        const addHoldEvents = (btn, dirStr) => {
+            const press = (e) => { 
+                e.preventDefault(); 
+                if(dirStr === 'left') isLeftPressed=true; 
+                else if(dirStr === 'right') isRightPressed=true;
+                else if(dirStr === 'jump') isJumpPressed=true;
+            };
+            const release = (e) => { 
+                e.preventDefault(); 
+                if(dirStr === 'left') isLeftPressed=false; 
+                else if(dirStr === 'right') isRightPressed=false;
+                else if(dirStr === 'jump') isJumpPressed=false;
+            };
             btn.addEventListener('mousedown', press);
             btn.addEventListener('touchstart', press, {passive: false});
-            window.addEventListener('mouseup', release); /* Global mouseup to prevent sticking */
+            window.addEventListener('mouseup', release);
             btn.addEventListener('mouseleave', release);
             btn.addEventListener('touchend', release);
         };
         
         if (btnLeft && btnRight) {
-            addHoldEvents(btnLeft, true);
-            addHoldEvents(btnRight, false);
+            addHoldEvents(btnLeft, 'left');
+            addHoldEvents(btnRight, 'right');
+            if (btnJump) addHoldEvents(btnJump, 'jump');
         }
     }
 });

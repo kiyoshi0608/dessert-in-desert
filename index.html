@@ -35,7 +35,7 @@
         <ul class="menu-links">
             <li><a href="#home">HOME</a></li>
             <li><a href="#album">ALBUM</a></li>
-            <li><a href="#bundle">BUNDLE SET</a></li>
+            <li><a href="#preorder">PRE-ORDER</a></li>
             <li><a href="#video">VIDEO</a></li>
             <li><a href="#review">REVIEW</a></li>
             <li><a href="#comments">MESSAGE</a></li>
@@ -123,24 +123,23 @@
         </div>
     </section>
 
-    <!-- Bundle Set Section -->
-    <section class="bundle-section" id="bundle">
+    <!-- Pre-order Section -->
+    <section class="bundle-section" id="preorder">
         <div class="section-watermark">SPECIAL</div>
         <div class="container">
             <div class="section-title-group centered">
-                <span class="vertical-label">LIMITED EDITION</span>
-                <h3 class="section-title">BUNDLE SET <span class="cute-icon">🎁</span></h3>
+                <span class="vertical-label">LIMITED EVENT</span>
+                <h3 class="section-title">PRE-ORDER <span class="cute-icon">🎁</span></h3>
             </div>
             
-            <div class="bundle-content">
-                <div class="bundle-images">
-                    <img src="media/bundle-set-1.jpg" alt="Bundle Set 1" class="bundle-img">
-                    <img src="media/bundle-set-2.jpg" alt="Bundle Set 2" class="bundle-img">
+            <div class="bundle-content" style="flex-direction: column; align-items: center; text-align: center;">
+                <div class="bundle-images" style="justify-content: center; margin-bottom: 2rem;">
+                    <img src="media/CD先行予約.JPG" alt="CD Pre-order" class="bundle-img" style="max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
                 </div>
                 
-                <div class="bundle-action">
-                    <p class="bundle-desc" data-i18n="bundle-desc">数量限定！特別なバンドルセットのご予約・ご購入はこちらから！</p>
-                    <a href="https://shop.pinefields.jp/?mode=cate&cbid=1082793&csid=0" class="btn btn-primary bundle-btn" target="_blank" rel="noopener" data-i18n="bundle-buy-btn">バンドルセットを予約・購入する</a>
+                <div class="bundle-action" style="max-width: 800px; margin: 0 auto;">
+                    <p class="bundle-desc" data-i18n="preorder-desc" style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">CDの先行予約がスタート！<br>先行販売期間中にご購入いただいた皆様に「ジャケットステッカー」プレゼント！</p>
+                    <a href="https://shop.pinefields.jp/?mode=cate&cbid=1082793&csid=0" class="btn btn-primary bundle-btn" target="_blank" rel="noopener" data-i18n="preorder-buy-btn" style="font-size: 1.4rem; padding: 1rem 3rem;">CDを先行予約する</a>
                 </div>
             </div>
         </div>
@@ -450,6 +449,7 @@
                     </div>
                     <div class="mobile-controls">
                         <button id="btn-left" class="control-btn">◀</button>
+                        <button id="btn-jump" class="control-btn" style="flex: 0.5; font-weight: bold; font-family: 'Outfit', sans-serif;">JUMP</button>
                         <button id="btn-right" class="control-btn">▶</button>
                     </div>
                 </div>
@@ -475,10 +475,11 @@
                 <h4 class="rules-title" data-i18n="game-rules-title">【遊び方＆ルール】</h4>
                 <ul class="rules-list">
                     <li data-i18n="game-rule-1">空から降ってくるデザート🍰🍩をキャッチしよう！</li>
-                    <li data-i18n="game-rule-2">左右キー（スマホは画面下の◀▶）でキャラクターを動かします。</li>
+                    <li data-i18n="game-rule-2">左右キー（スマホは画面下の◀▶）でキャラクターを動かします。上キー（JUMPボタン）でジャンプ！</li>
                     <li data-i18n="game-rule-3">サボテン🌵に当たるとライフ減少！3回当たるとゲームオーバー。</li>
                     <li data-i18n="game-rule-4">7種類のデザートをコンプリートするとクリア！特製壁紙をプレゼント🎁</li>
                     <li data-i18n="game-rule-5">💩や🚽に当たると一発でゲームオーバー！気をつけて！</li>
+                    <li>⭐光る「フィーバーデザート」を取ると少しの間無敵＆移動速度アップ！</li>
                 </ul>
             </div>
         </div>
@@ -591,7 +592,7 @@
                     <div class="tour-date">11.14 <span class="day">SAT</span></div>
                     <div class="tour-venue">高松TOONICE</div>
                 </a>
-                <a href="https://sabotenrock.com/live/" class="tour-item tour-final" target="_blank" rel="noopener">
+                <a href="https://sabotenrock.com/live/%e3%82%bf%e3%82%a4%e3%83%88%e3%83%ab%e6%9c%aa%e5%ae%9a-13-2-2-2-2-2-2-2-2-2-2-2-2-2/" class="tour-item tour-final" target="_blank" rel="noopener">
                     <div class="tour-badge-wrapper"><span class="tour-badge final">TOUR FINAL</span></div>
                     <div class="tour-date">11.22 <span class="day">SUN</span></div>
                     <div class="tour-venue">GORILLA HALL OSAKA</div>
