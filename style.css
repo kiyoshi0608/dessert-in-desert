@@ -1690,6 +1690,20 @@ body.no-scroll {
     margin: 0;
 }
 
+.note-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    color: var(--color-pop-red);
+    font-weight: 800;
+    text-decoration: underline;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.note-link:hover {
+    color: var(--color-desert);
+    transform: translateX(8px) scale(1.05);
+}
+
 @media (max-width: 768px) {
     .comment-bubble {
         padding: 1.5rem !important;
@@ -2703,98 +2717,7 @@ body.no-scroll {
     }
 }
 
-/* ===== BUNDLE SECTION ===== */
-.bundle-section {
-    position: relative;
-    padding: var(--spacing-xl) 0;
-    background: var(--color-light);
-    overflow: hidden;
-}
 
-.bundle-section .section-watermark {
-    position: absolute;
-    top: 5rem;
-    left: -5%;
-    font-family: var(--font-display);
-    font-size: 15vw;
-    color: rgba(0, 0, 0, 0.03);
-    pointer-events: none;
-    line-height: 1;
-    z-index: 1;
-    white-space: nowrap;
-    text-transform: uppercase;
-}
-
-.bundle-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-    position: relative;
-    z-index: 2;
-}
-
-.bundle-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-md);
-    width: 100%;
-}
-
-.bundle-img {
-    max-width: 100%;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: var(--sh-soft);
-    border: 4px solid #fff;
-    flex: 1 1 350px;
-    object-fit: cover;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.bundle-img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
-
-.bundle-action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-sm);
-}
-
-.bundle-desc {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--color-darker);
-    line-height: 1.5;
-}
-
-.bundle-btn {
-    font-size: clamp(1.1rem, 3vw, 1.4rem) !important;
-    padding: 1.2rem 3rem !important;
-    border-radius: 100px !important;
-    text-transform: none !important;
-    margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-    .bundle-images {
-        flex-direction: column;
-    }
-    .bundle-img {
-        flex: 1 1 auto;
-    }
-    .bundle-desc {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-}
 
 @keyframes flashFade {
     0% { opacity: 0; }
