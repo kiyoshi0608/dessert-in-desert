@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'name-yasso': 'ヤッソー',
             'name-sakecode': 'サケ・スイーツ',
             'name-sake': 'サケ',
+            'profile-bio': '1999年大阪で結成。笑顔と感動を放つ3ピースロックバンドSABOTEN。<br>メロディックかつスピーディーなバンドサウンドにのせたオリジナリティー溢れる日本詞は、抜群のコーラスワークと共に優しくも時に鋭く攻撃的に胸を刺し、全国のオーディエンスの心を震わせている。<br>バンドの代表曲、“シナリオ”がアニメ「NARUTO」のタイアップを獲得したことや、数々のアルバムをチャートに送り込んだことなど、日本全国へその名を轟かせながら、飽くなきまでにライブハウスにこだわった活動を展開中。<br>悲しい時も、切ない時も、苦しい時も、嬉しい時も、楽しい時も、どんな時でもライブハウスに会いに来てください！<br>SABOTEN ROCKでハイになろう！',
             'btn-label': 'EN',
             'btn-aria': 'Switch to English',
             'html-lang': 'ja'
@@ -157,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'name-yasso': 'YASSO',
             'name-sakecode': 'SAKE-SWEETS',
             'name-sake': 'SAKE',
+            'profile-bio': "Formed in Osaka in 1999. SABOTEN is a 3-piece rock band that delivers smiles and raw emotion.<br><br>Their original Japanese lyrics, set to melodic and speedy band sounds, pierce the heart sometimes gently, sometimes sharply and aggressively, with outstanding chorus work that vibrates through audiences nationwide.<br><br>With their signature song 'Scenario' featured in the 'NARUTO' anime and numerous albums hitting the charts, they continue to build their reputation across Japan while remaining tirelessly dedicated to live houses.<br><br>Whether you are sad, lonely, struggling, happy, or having fun, please come visit us at a live house anytime!<br><br>Let's get high with SABOTEN ROCK!",
             'btn-label': 'JA',
             'btn-aria': '日本語に切り替え',
             'html-lang': 'en'

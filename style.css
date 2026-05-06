@@ -1025,6 +1025,124 @@ body.no-scroll {
     }
 }
 
+/* ===== PROFILE SECTION ===== */
+.profile-section {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    background: var(--color-light);
+    border-top: 8px solid var(--color-dark);
+    overflow: visible !important;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.profile-visual {
+    position: relative;
+    z-index: 2;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    border: 8px solid var(--color-dark);
+    box-shadow: 20px 20px 0 var(--color-pop-yellow);
+    display: block;
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+    background: #fff;
+}
+
+.profile-img:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.member-names-strip {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    transform: rotate(1deg);
+}
+
+.member-name-tag {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: 0.5rem 1.2rem;
+    font-family: var(--font-punk);
+    font-size: 1.1rem;
+    width: fit-content;
+    border-radius: 2px;
+    box-shadow: 4px 4px 0 var(--color-pop-red);
+}
+
+.profile-info {
+    position: relative;
+}
+
+.section-title-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.vertical-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-transform: uppercase;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    background: #000;
+    color: #fff;
+    padding: 1.2rem 0.6rem;
+    box-shadow: 4px 4px 0 var(--color-pop-red);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 60px;
+}
+
+.profile-bio {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--color-darker);
+    font-family: var(--font-body);
+}
+
+.profile-bio br {
+    display: block;
+    content: "";
+    margin-top: 1rem;
+}
+
+@media (max-width: 992px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    .profile-visual {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .vertical-label {
+        height: auto;
+        writing-mode: horizontal-tb;
+        border-left: none;
+        border-bottom: 2px solid var(--color-pop-red);
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+}
+
 /* --- Global Section Elements --- */
 .album-info,
 .tour-section,
@@ -1127,20 +1245,7 @@ body.no-scroll {
     z-index: 10;
 }
 
-.vertical-label {
-    writing-mode: vertical-rl;
-    text-transform: uppercase;
-    font-family: var(--font-accent);
-    font-size: 0.8rem;
-    font-weight: 900;
-    letter-spacing: 0.3em;
-    background: #000;
-    color: #fff;
-    padding: 1.5rem 0.6rem;
-    box-shadow: 6px 6px 0 var(--color-pop-red);
-    flex-shrink: 0;
-    margin-top: 0.5rem;
-}
+/* 統合済みのため削除 */
 
 .section-title {
     font-family: var(--font-title);
